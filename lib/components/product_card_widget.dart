@@ -2,9 +2,12 @@ import '/components/button2_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_card_model.dart';
 export 'product_card_model.dart';
 
@@ -15,11 +18,11 @@ class ProductCardWidget extends StatefulWidget {
     String? name,
     String? originalPrice,
     String? price,
-  })  : this.imageDesc = imageDesc ??
+  })  : imageDesc = imageDesc ??
             'https://dimg.dreamflow.cloud/v1/image/white%20medicine%20box%20with%20blue%20text',
-        this.name = name ?? 'Panadol Advance 500mg',
-        this.originalPrice = originalPrice ?? 'e_g_p_720_00',
-        this.price = price ?? 'EGP 45.00';
+        name = name ?? 'Panadol Advance 500mg',
+        originalPrice = originalPrice ?? 'e_g_p_720_00',
+        price = price ?? 'EGP 45.00';
 
   final String imageDesc;
   final String name;
@@ -70,51 +73,51 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
+          SizedBox(
             height: 140.0,
             child: Stack(
-              alignment: AlignmentDirectional(-1.0, -1.0),
+              alignment: const AlignmentDirectional(-1.0, -1.0),
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16.0),
-                    topRight: Radius.circular(16.0),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: const Radius.circular(16.0),
+                    topRight: const Radius.circular(16.0),
                   ),
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF1F5F9),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16.0),
-                        topRight: Radius.circular(16.0),
+                    decoration: const BoxDecoration(
+                      color: const Color(0xFFF1F5F9),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: const Radius.circular(16.0),
+                        topRight: const Radius.circular(16.0),
                       ),
                       shape: BoxShape.rectangle,
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: CachedNetworkImage(
-                        fadeInDuration: Duration(milliseconds: 0),
-                        fadeOutDuration: Duration(milliseconds: 0),
+                        fadeInDuration: const Duration(milliseconds: 0),
+                        fadeOutDuration: const Duration(milliseconds: 0),
                         imageUrl: valueOrDefault<String>(
                           widget.imageDesc,
                           'https://dimg.dreamflow.cloud/v1/image/white%20medicine%20box%20with%20blue%20text',
                         ),
                         fit: BoxFit.contain,
-                        alignment: Alignment(0.0, 0.0),
+                        alignment: const Alignment(0.0, 0.0),
                       ),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, -1.0),
+                  alignment: const AlignmentDirectional(1.0, -1.0),
                   child: Container(
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Container(
                         child: FlutterFlowIconButton(
                           borderRadius: 9999.0,
                           buttonSize: 40.0,
-                          fillColor: Color(0xCCFFFFFF),
-                          icon: Icon(
+                          fillColor: const Color(0xCCFFFFFF),
+                          icon: const Icon(
                             Icons.favorite_border_rounded,
                             size: 20.0,
                           ),
@@ -130,13 +133,13 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   height: 40.0,
                   child: Text(
                     valueOrDefault<String>(
@@ -230,12 +233,12 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                               lineHeight: 1.4,
                             ),
                       ),
-                  ].divide(SizedBox(width: 4.0)),
+                  ].divide(const SizedBox(width: 4.0)),
                 ),
                 wrapWithModel(
                   model: _model.buttonModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: Button2Widget(
+                  child: const Button2Widget(
                     iconPresent: false,
                     iconEndPresent: false,
                     content: 'Add to Cart',
@@ -246,7 +249,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                     disabled: false,
                   ),
                 ),
-              ].divide(SizedBox(height: 4.0)),
+              ].divide(const SizedBox(height: 4.0)),
             ),
           ),
         ],

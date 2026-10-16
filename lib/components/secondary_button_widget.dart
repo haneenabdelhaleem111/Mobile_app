@@ -1,6 +1,10 @@
 import '/components/button19_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'secondary_button_model.dart';
 export 'secondary_button_model.dart';
 
@@ -9,8 +13,8 @@ class SecondaryButtonWidget extends StatefulWidget {
     super.key,
     String? label,
     String? icon,
-  })  : this.label = label ?? 'Back to Shopping',
-        this.icon = icon ?? 'shopping_bag_outlined';
+  })  : label = label ?? 'Back to Shopping',
+        icon = icon ?? 'shopping_bag_outlined';
 
   final String label;
   final String icon;

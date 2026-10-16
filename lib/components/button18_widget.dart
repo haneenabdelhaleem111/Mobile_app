@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'button18_model.dart';
 export 'button18_model.dart';
 
@@ -19,14 +22,14 @@ class Button18Widget extends StatefulWidget {
     bool? fullWidth,
     bool? loading,
     bool? disabled,
-  })  : this.iconPresent = iconPresent ?? true,
-        this.iconEndPresent = iconEndPresent ?? false,
-        this.content = content ?? 'Change Password',
-        this.variant = variant ?? 'outline',
-        this.size = size ?? 'small',
-        this.fullWidth = fullWidth ?? true,
-        this.loading = loading ?? false,
-        this.disabled = disabled ?? false;
+  })  : iconPresent = iconPresent ?? true,
+        iconEndPresent = iconEndPresent ?? false,
+        content = content ?? 'Change Password',
+        variant = variant ?? 'outline',
+        size = size ?? 'small',
+        fullWidth = fullWidth ?? true,
+        loading = loading ?? false,
+        disabled = disabled ?? false;
 
   final Widget? icon;
   final bool iconPresent;
@@ -217,10 +220,10 @@ class _Button18WidgetState extends State<Button18Widget> {
             ),
           ),
         ),
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Stack(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             children: [
               Opacity(
                 opacity: valueOrDefault<double>(
@@ -390,7 +393,7 @@ class _Button18WidgetState extends State<Button18Widget> {
                         false,
                       ))
                         widget.iconEnd!,
-                    ].divide(SizedBox(width: 8.0)),
+                    ].divide(const SizedBox(width: 8.0)),
                   ),
                 ),
               ),

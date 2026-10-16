@@ -1,9 +1,11 @@
+import 'dart:async';
 import '/components/brand_logo_card_widget.dart';
 import '/components/button24_widget.dart';
 import '/components/emshaty_category2_widget.dart';
-import '/components/emshaty_product_card2_widget.dart';
 import '/components/emshaty_promo_banner2_widget.dart';
 import '/components/emshaty_search_bar2_widget.dart';
+import '/backend/woocommerce/catalog_widgets.dart';
+import '/backend/woocommerce/woocommerce_cart_controller.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -33,6 +35,10 @@ class _HomeWidgetState extends State<HomeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeModel());
+    final cartController = WooCommerceCartController.instance;
+    if (!cartController.hasLoadedCart) {
+      unawaited(cartController.loadCart());
+    }
   }
 
   @override
@@ -67,8 +73,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 8.0),
                     child: Container(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -85,7 +91,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 width: 50.0,
                                 height: 50.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.asset(
@@ -143,9 +149,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.location_on_rounded,
-                                            color: Color(0xFF0F172A),
+                                            color: const Color(0xFF0F172A),
                                             size: 14.0,
                                           ),
                                           Text(
@@ -182,31 +188,77 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   lineHeight: 1.2,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(width: 4.0)),
+                                        ].divide(const SizedBox(width: 4.0)),
                                       ),
-                                    ].divide(SizedBox(height: 4.0)),
+                                    ].divide(const SizedBox(height: 4.0)),
                                   ),
-                                ].divide(SizedBox(width: 16.0)),
+                                ].divide(const SizedBox(width: 16.0)),
                               ),
-                              FlutterFlowIconButton(
-                                borderRadius: 16.0,
-                                buttonSize: 40.0,
-                                fillColor: Color(0x1A0056B3),
-                                icon: Icon(
-                                  Icons.shopping_bag_outlined,
-                                  color:
-                                      FlutterFlowTheme.of(context).vibrantColor,
-                                  size: 24.0,
-                                ),
-                                onPressed: () async {
-                                  context
-                                      .pushNamed(ShoppingCartWidget.routeName);
+                              AnimatedBuilder(
+                                animation: WooCommerceCartController.instance,
+                                builder: (context, _) {
+                                  final itemCount = WooCommerceCartController
+                                          .instance.cart?.itemsCount ??
+                                      0;
+                                  return Stack(
+                                    clipBehavior: Clip.none,
+                                    alignment: Alignment.center,
+                                    children: [
+                                      FlutterFlowIconButton(
+                                        borderRadius: 16.0,
+                                        buttonSize: 40.0,
+                                        fillColor: const Color(0x1A0056B3),
+                                        icon: Icon(
+                                          Icons.shopping_bag_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .vibrantColor,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                              ShoppingCartWidget.routeName);
+                                        },
+                                      ),
+                                      if (itemCount > 0)
+                                        Positioned(
+                                          top: -8,
+                                          right: -10,
+                                          child: Container(
+                                            constraints: const BoxConstraints(
+                                              minWidth: 17,
+                                              minHeight: 17,
+                                            ),
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 4,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              itemCount > 99
+                                                  ? '99+'
+                                                  : '$itemCount',
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  );
                                 },
                               ),
                               FlutterFlowIconButton(
                                 borderRadius: 16.0,
                                 buttonSize: 40.0,
-                                fillColor: Color(0x1A0056B3),
+                                fillColor: const Color(0x1A0056B3),
                                 icon: Icon(
                                   Icons.favorite_border,
                                   color:
@@ -222,9 +274,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                           wrapWithModel(
                             model: _model.emshatySearchBarModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: EmshatySearchBar2Widget(),
+                            child: const EmshatySearchBar2Widget(),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
@@ -249,7 +301,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -259,7 +311,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               wrapWithModel(
                                 model: _model.emshatyPromoBannerModel1,
                                 updateCallback: () => safeSetState(() {}),
-                                child: EmshatyPromoBanner2Widget(
+                                child: const EmshatyPromoBanner2Widget(
                                   btnLabel: 'Shop Now',
                                   subtitle:
                                       'Boost your immunity today with our premium selection',
@@ -321,7 +373,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.buttonModel1,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: Button24Widget(
+                                          child: const Button24Widget(
                                             iconPresent: false,
                                             iconEndPresent: false,
                                             content: 'View All',
@@ -429,10 +481,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             title: 'Devices',
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                      ].divide(const SizedBox(width: 16.0)),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -489,7 +541,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.buttonModel2,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: Button24Widget(
+                                          child: const Button24Widget(
                                             iconPresent: false,
                                             iconEndPresent: false,
                                             content: 'View All',
@@ -516,7 +568,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.brandLogoCardModel1,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: BrandLogoCardWidget(
+                                          child: const BrandLogoCardWidget(
                                             name: 'La Roche-Posay',
                                             slug:
                                                 'https://cdn.simpleicons.org/larocheposay/0056b3.svg',
@@ -526,7 +578,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.brandLogoCardModel2,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: BrandLogoCardWidget(
+                                          child: const BrandLogoCardWidget(
                                             name: 'Vichy',
                                             slug:
                                                 'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -536,7 +588,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.brandLogoCardModel3,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: BrandLogoCardWidget(
+                                          child: const BrandLogoCardWidget(
                                             name: 'Bioderma',
                                             slug:
                                                 'https://cdn.simpleicons.org/bioderma/0056b3.svg',
@@ -546,7 +598,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.brandLogoCardModel4,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: BrandLogoCardWidget(
+                                          child: const BrandLogoCardWidget(
                                             name: 'Centrum',
                                             slug:
                                                 'https://cdn.simpleicons.org/centrum/0056b3.svg',
@@ -556,16 +608,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.brandLogoCardModel5,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: BrandLogoCardWidget(
+                                          child: const BrandLogoCardWidget(
                                             name: 'Panadol',
                                             slug:
                                                 'https://cdn.simpleicons.org/panadol/0056b3.svg',
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                      ].divide(const SizedBox(width: 16.0)),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -622,7 +674,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.buttonModel3,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: Button24Widget(
+                                          child: const Button24Widget(
                                             iconPresent: false,
                                             iconEndPresent: false,
                                             content: 'View All',
@@ -636,63 +688,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     ],
                                   ),
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        wrapWithModel(
-                                          model:
-                                              _model.emshatyProductCardModel1,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmshatyProductCard2Widget(
-                                            imgDesc:
-                                                'https://dimg.dreamflow.cloud/v1/image/box%20of%20panadol%20medicine',
-                                            name: 'Panadol Advance 500mg',
-                                            price: 'EGP 45.00',
-                                            oldPrice: 'EGP 55.00',
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model:
-                                              _model.emshatyProductCardModel2,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmshatyProductCard2Widget(
-                                            imgDesc:
-                                                'https://dimg.dreamflow.cloud/v1/image/blue%20skincare%20bottle',
-                                            name: 'La Roche-Posay Effaclar',
-                                            price: 'EGP 680.00',
-                                            oldPrice: 'e_g_p_55_00',
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model:
-                                              _model.emshatyProductCardModel3,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmshatyProductCard2Widget(
-                                            imgDesc:
-                                                'https://dimg.dreamflow.cloud/v1/image/vitamin%20bottle',
-                                            name: 'Centrum Silver Lutein',
-                                            price: 'EGP 420.00',
-                                            oldPrice: 'EGP 500.00',
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(width: 16.0)),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
+                                  const WooCatalogProductsWidget(
+                                      horizontal: true,
+                                      perPage: 6,
+                                      onSale: true),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                               wrapWithModel(
                                 model: _model.emshatyPromoBannerModel2,
                                 updateCallback: () => safeSetState(() {}),
-                                child: EmshatyPromoBanner2Widget(
+                                child: const EmshatyPromoBanner2Widget(
                                   btnLabel: 'Shop Now',
                                   subtitle:
                                       'Boost your immunity today with our premium selection',
@@ -754,7 +759,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           model: _model.buttonModel4,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: Button24Widget(
+                                          child: const Button24Widget(
                                             iconPresent: false,
                                             iconEndPresent: false,
                                             content: 'View All',
@@ -768,60 +773,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     ],
                                   ),
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        wrapWithModel(
-                                          model:
-                                              _model.emshatyProductCardModel4,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmshatyProductCard2Widget(
-                                            imgDesc:
-                                                'https://dimg.dreamflow.cloud/v1/image/box%20of%20panadol%20medicine',
-                                            name: 'Panadol Advance 500mg',
-                                            price: 'EGP 45.00',
-                                            oldPrice: 'EGP 55.00',
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model:
-                                              _model.emshatyProductCardModel5,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmshatyProductCard2Widget(
-                                            imgDesc:
-                                                'https://dimg.dreamflow.cloud/v1/image/blue%20skincare%20bottle',
-                                            name: 'La Roche-Posay Effaclar',
-                                            price: 'EGP 680.00',
-                                            oldPrice: 'e_g_p_55_00',
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model:
-                                              _model.emshatyProductCardModel6,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmshatyProductCard2Widget(
-                                            imgDesc:
-                                                'https://dimg.dreamflow.cloud/v1/image/vitamin%20bottle',
-                                            name: 'Centrum Silver Lutein',
-                                            price: 'EGP 420.00',
-                                            oldPrice: 'EGP 500.00',
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(width: 16.0)),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
+                                  const WooCatalogProductsWidget(
+                                      horizontal: true, perPage: 6),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
-                            ].divide(SizedBox(height: 24.0)),
+                            ].divide(const SizedBox(height: 24.0)),
                           ),
                         ),
                       ),

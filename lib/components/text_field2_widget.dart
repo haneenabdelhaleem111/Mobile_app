@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'text_field2_model.dart';
 export 'text_field2_model.dart';
 
@@ -22,18 +25,18 @@ class TextField2Widget extends StatefulWidget {
     String? onSubmit,
     String? variant,
     bool? error,
-  })  : this.label = label ?? 'Email Address',
-        this.labelPresent = labelPresent ?? true,
-        this.helper = helper ?? '',
-        this.helperPresent = helperPresent ?? false,
-        this.leadingIconPresent = leadingIconPresent ?? true,
-        this.trailingIconPresent = trailingIconPresent ?? false,
-        this.hint = hint ?? 'name@example.com',
-        this.value = value ?? '',
-        this.onChange = onChange ?? '',
-        this.onSubmit = onSubmit ?? '',
-        this.variant = variant ?? 'outlined',
-        this.error = error ?? false;
+  })  : label = label ?? 'Email Address',
+        labelPresent = labelPresent ?? true,
+        helper = helper ?? '',
+        helperPresent = helperPresent ?? false,
+        leadingIconPresent = leadingIconPresent ?? true,
+        trailingIconPresent = trailingIconPresent ?? false,
+        hint = hint ?? 'name@example.com',
+        value = value ?? '',
+        onChange = onChange ?? '',
+        onSubmit = onSubmit ?? '',
+        variant = variant ?? 'outlined',
+        error = error ?? false;
 
   final String label;
   final bool labelPresent;
@@ -371,8 +374,8 @@ class _TextField2WidgetState extends State<TextField2Widget> {
                     true,
                   ))
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 5.0, 0.0),
                       child: widget.leadingIcon!,
                     ),
                   Expanded(
@@ -517,7 +520,7 @@ class _TextField2WidgetState extends State<TextField2Widget> {
                     lineHeight: 1.4,
                   ),
             ),
-        ].divide(SizedBox(height: 6.0)),
+        ].divide(const SizedBox(height: 6.0)),
       ),
     );
   }

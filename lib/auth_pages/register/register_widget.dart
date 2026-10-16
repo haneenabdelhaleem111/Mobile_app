@@ -4,8 +4,11 @@ import '/components/text_field3_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'register_model.dart';
 export 'register_model.dart';
 
@@ -58,7 +61,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(
+                    24.0, 48.0, 24.0, 16.0),
                 child: Container(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -68,7 +72,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       FlutterFlowIconButton(
                         borderRadius: 12.0,
                         buttonSize: 40.0,
-                        fillColor: Color(0x1A0056B3),
+                        fillColor: const Color(0x1A0056B3),
                         icon: Icon(
                           Icons.arrow_back_rounded,
                           color: FlutterFlowTheme.of(context).primary,
@@ -127,7 +131,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               lineHeight: 1.5,
                             ),
                       ),
-                    ].divide(SizedBox(height: 8.0)),
+                    ].divide(const SizedBox(height: 8.0)),
                   ),
                 ),
               ),
@@ -143,7 +147,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -257,7 +261,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       error: false,
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -267,7 +271,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   wrapWithModel(
                                     model: _model.buttonAuthModel,
                                     updateCallback: () => safeSetState(() {}),
-                                    child: ButtonAuthWidget(
+                                    child: const ButtonAuthWidget(
                                       iconPresent: false,
                                       iconEndPresent: false,
                                       content: 'Create Account',
@@ -276,9 +280,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       disabled: false,
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
-                            ].divide(SizedBox(height: 24.0)),
+                            ].divide(const SizedBox(height: 24.0)),
                           ),
                         ),
                       ),
@@ -288,7 +292,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.rectangle,
               ),
               child: Column(
@@ -303,7 +307,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(24.0),
                     child: Container(
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -338,7 +342,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           wrapWithModel(
                             model: _model.buttonModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: Button13Widget(
+                            child: const Button13Widget(
                               iconPresent: false,
                               iconEndPresent: false,
                               content: 'Login',
@@ -349,7 +353,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               disabled: false,
                             ),
                           ),
-                        ].divide(SizedBox(width: 4.0)),
+                        ].divide(const SizedBox(width: 4.0)),
                       ),
                     ),
                   ),

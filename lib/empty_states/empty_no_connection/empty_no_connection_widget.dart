@@ -1,7 +1,10 @@
 import '/components/empty_state_connection_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'empty_no_connection_model.dart';
 export 'empty_no_connection_model.dart';
 
@@ -49,7 +52,7 @@ class _EmptyNoConnectionWidgetState extends State<EmptyNoConnectionWidget> {
           child: wrapWithModel(
             model: _model.emptyStateConnectionModel,
             updateCallback: () => safeSetState(() {}),
-            child: EmptyStateConnectionWidget(),
+            child: const EmptyStateConnectionWidget(),
           ),
         ),
       ),

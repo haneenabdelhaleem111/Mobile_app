@@ -1,9 +1,12 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_card7_model.dart';
 export 'product_card7_model.dart';
 
@@ -16,13 +19,13 @@ class ProductCard7Widget extends StatefulWidget {
     String? price,
     String? rating,
     String? originalPrice,
-  })  : this.brand = brand ?? 'Redoxon',
-        this.imageDesc = imageDesc ??
+  })  : brand = brand ?? 'Redoxon',
+        imageDesc = imageDesc ??
             'https://dimg.dreamflow.cloud/v1/image/orange%20and%20white%20tube%20of%20effervescent%20tablets',
-        this.name = name ?? 'Vitamin C 1000mg Effervescent',
-        this.price = price ?? 'EGP 120.00',
-        this.rating = rating ?? 'Rating',
-        this.originalPrice = originalPrice ?? 'EGP 150.00';
+        name = name ?? 'Vitamin C 1000mg Effervescent',
+        price = price ?? 'EGP 120.00',
+        rating = rating ?? 'Rating',
+        originalPrice = originalPrice ?? 'EGP 150.00';
 
   final String brand;
   final String imageDesc;
@@ -78,30 +81,30 @@ class _ProductCard7WidgetState extends State<ProductCard7Widget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
-              alignment: AlignmentDirectional(-1.0, -1.0),
+              alignment: const AlignmentDirectional(-1.0, -1.0),
               children: [
                 CachedNetworkImage(
-                  fadeInDuration: Duration(milliseconds: 0),
-                  fadeOutDuration: Duration(milliseconds: 0),
+                  fadeInDuration: const Duration(milliseconds: 0),
+                  fadeOutDuration: const Duration(milliseconds: 0),
                   imageUrl: valueOrDefault<String>(
                     widget.imageDesc,
                     'https://dimg.dreamflow.cloud/v1/image/orange%20and%20white%20tube%20of%20effervescent%20tablets',
                   ),
                   height: 120.0,
                   fit: BoxFit.cover,
-                  alignment: Alignment(0.0, 0.0),
+                  alignment: const Alignment(0.0, 0.0),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, -1.0),
+                  alignment: const AlignmentDirectional(1.0, -1.0),
                   child: Container(
                     child: Padding(
-                      padding: EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         child: FlutterFlowIconButton(
                           borderRadius: 9999.0,
                           buttonSize: 40.0,
-                          fillColor: Color(0xCCFFFFFF),
-                          icon: Icon(
+                          fillColor: const Color(0xCCFFFFFF),
+                          icon: const Icon(
                             Icons.favorite_border_rounded,
                             size: 18.0,
                           ),
@@ -116,7 +119,7 @@ class _ProductCard7WidgetState extends State<ProductCard7Widget> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -241,12 +244,12 @@ class _ProductCard7WidgetState extends State<ProductCard7Widget> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color(0x1A00A8E8),
+                          color: const Color(0x1A00A8E8),
                           borderRadius: BorderRadius.circular(8.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: Container(
                             child: Text(
                               valueOrDefault<String>(
@@ -264,7 +267,7 @@ class _ProductCard7WidgetState extends State<ProductCard7Widget> {
                                           .labelSmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF0F172A),
+                                    color: const Color(0xFF0F172A),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelSmall
@@ -280,7 +283,7 @@ class _ProductCard7WidgetState extends State<ProductCard7Widget> {
                       ),
                     ],
                   ),
-                ].divide(SizedBox(height: 4.0)),
+                ].divide(const SizedBox(height: 4.0)),
               ),
             ),
           ],

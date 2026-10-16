@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'text_field7_model.dart';
 export 'text_field7_model.dart';
 
@@ -22,18 +25,18 @@ class TextField7Widget extends StatefulWidget {
     String? onSubmit,
     String? variant,
     bool? error,
-  })  : this.label = label ?? '',
-        this.labelPresent = labelPresent ?? false,
-        this.helper = helper ?? '',
-        this.helperPresent = helperPresent ?? false,
-        this.leadingIconPresent = leadingIconPresent ?? true,
-        this.trailingIconPresent = trailingIconPresent ?? false,
-        this.hint = hint ?? 'Search saved items',
-        this.value = value ?? '',
-        this.onChange = onChange ?? '',
-        this.onSubmit = onSubmit ?? '',
-        this.variant = variant ?? 'filled',
-        this.error = error ?? false;
+  })  : label = label ?? '',
+        labelPresent = labelPresent ?? false,
+        helper = helper ?? '',
+        helperPresent = helperPresent ?? false,
+        leadingIconPresent = leadingIconPresent ?? true,
+        trailingIconPresent = trailingIconPresent ?? false,
+        hint = hint ?? 'Search saved items',
+        value = value ?? '',
+        onChange = onChange ?? '',
+        onSubmit = onSubmit ?? '',
+        variant = variant ?? 'filled',
+        error = error ?? false;
 
   final String label;
   final bool labelPresent;
@@ -510,7 +513,7 @@ class _TextField7WidgetState extends State<TextField7Widget> {
                     lineHeight: 1.4,
                   ),
             ),
-        ].divide(SizedBox(height: 6.0)),
+        ].divide(const SizedBox(height: 6.0)),
       ),
     );
   }

@@ -1,6 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'bottom_nav3_model.dart';
 export 'bottom_nav3_model.dart';
 
@@ -50,7 +54,7 @@ class _BottomNav3WidgetState extends State<BottomNav3Widget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -60,7 +64,7 @@ class _BottomNav3WidgetState extends State<BottomNav3Widget> {
               Builder(builder: (_) {
                 return widget.child != null
                     ? widget.child!()
-                    : SizedBox.shrink();
+                    : const SizedBox.shrink();
               }),
             ],
           ),

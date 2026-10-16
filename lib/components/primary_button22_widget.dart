@@ -1,6 +1,10 @@
 import '/components/button22_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'primary_button22_model.dart';
 export 'primary_button22_model.dart';
 
@@ -9,7 +13,7 @@ class PrimaryButton22Widget extends StatefulWidget {
     super.key,
     this.icon,
     String? label,
-  }) : this.label = label ?? 'Buy Now';
+  }) : label = label ?? 'Buy Now';
 
   final Widget? icon;
   final String label;

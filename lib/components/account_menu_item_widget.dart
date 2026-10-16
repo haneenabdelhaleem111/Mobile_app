@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'account_menu_item_model.dart';
 export 'account_menu_item_model.dart';
 
@@ -13,10 +16,10 @@ class AccountMenuItemWidget extends StatefulWidget {
     String? title,
     bool? hasSubtitle,
     String? subtitle,
-  })  : this.color = color ?? const Color(0x00000000),
-        this.title = title ?? 'My Orders',
-        this.hasSubtitle = hasSubtitle ?? true,
-        this.subtitle = subtitle ?? 'Track and manage your purchases';
+  })  : color = color ?? const Color(0x00000000),
+        title = title ?? 'My Orders',
+        hasSubtitle = hasSubtitle ?? true,
+        subtitle = subtitle ?? 'Track and manage your purchases';
 
   final Color color;
   final Widget? icon;
@@ -53,7 +56,7 @@ class _AccountMenuItemWidgetState extends State<AccountMenuItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
       child: Container(
         child: Container(
           decoration: BoxDecoration(
@@ -61,7 +64,7 @@ class _AccountMenuItemWidgetState extends State<AccountMenuItemWidget> {
             shape: BoxShape.rectangle,
           ),
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -79,7 +82,7 @@ class _AccountMenuItemWidgetState extends State<AccountMenuItemWidget> {
                       borderRadius: BorderRadius.circular(16.0),
                       shape: BoxShape.rectangle,
                     ),
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: widget.icon!,
                   ),
                   Expanded(
@@ -151,7 +154,7 @@ class _AccountMenuItemWidgetState extends State<AccountMenuItemWidget> {
                                     ),
                             overflow: TextOverflow.ellipsis,
                           ),
-                      ].divide(SizedBox(height: 2.0)),
+                      ].divide(const SizedBox(height: 2.0)),
                     ),
                   ),
                   Icon(
@@ -159,7 +162,7 @@ class _AccountMenuItemWidgetState extends State<AccountMenuItemWidget> {
                     color: FlutterFlowTheme.of(context).lightMutedColor,
                     size: 20.0,
                   ),
-                ].divide(SizedBox(width: 16.0)),
+                ].divide(const SizedBox(width: 16.0)),
               ),
             ),
           ),

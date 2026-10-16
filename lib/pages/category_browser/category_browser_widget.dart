@@ -1,6 +1,5 @@
-import '/components/category_item_widget.dart';
-import '/components/offer_banner8_widget.dart';
 import '/components/search_bar9_widget.dart';
+import '/backend/woocommerce/catalog_widgets.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -63,8 +62,8 @@ class _CategoryBrowserWidgetState extends State<CategoryBrowserWidget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        24.0, 24.0, 24.0, 16.0),
                     child: Container(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -83,7 +82,7 @@ class _CategoryBrowserWidgetState extends State<CategoryBrowserWidget> {
                                     width: 40.0,
                                     height: 40.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.asset(
@@ -152,10 +151,11 @@ class _CategoryBrowserWidgetState extends State<CategoryBrowserWidget> {
                                           lineHeight: 1.4,
                                         ),
                                   ),
-                                ].divide(SizedBox(height: 4.0)),
+                                ].divide(const SizedBox(height: 4.0)),
                               ),
                               Stack(
-                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                alignment:
+                                    const AlignmentDirectional(-1.0, -1.0),
                                 children: [
                                   FlutterFlowIconButton(
                                     borderRadius: 8.0,
@@ -172,8 +172,9 @@ class _CategoryBrowserWidgetState extends State<CategoryBrowserWidget> {
                                     },
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(1.0, -1.0),
-                                    child: Container(
+                                    alignment:
+                                        const AlignmentDirectional(1.0, -1.0),
+                                    child: SizedBox(
                                       width: 0.0,
                                       height: 0.0,
                                     ),
@@ -185,11 +186,11 @@ class _CategoryBrowserWidgetState extends State<CategoryBrowserWidget> {
                           wrapWithModel(
                             model: _model.searchBarModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: SearchBar9Widget(
+                            child: const SearchBar9Widget(
                               hint: 'Search medicines, brands...',
                             ),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
@@ -203,389 +204,13 @@ class _CategoryBrowserWidgetState extends State<CategoryBrowserWidget> {
                 ],
               ),
             ),
-            Expanded(
+            const Expanded(
               flex: 1,
-              child: Container(
-                child: SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(24.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              wrapWithModel(
-                                model: _model.offerBannerModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: OfferBanner8Widget(
-                                  imageDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/luxury%20skincare%20bottles%20with%20water%20droplets',
-                                  subtitle:
-                                      'Up to 30% off on La Roche-Posay & Vichy',
-                                  title: 'Dermacosmetics',
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Medical Supplies',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight: FontWeight.w800,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w800,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                      Text(
-                                        'See All',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontStyle,
-                                              lineHeight: 1.3,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel1,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '1,240 Products',
-                                          icon: Icon(
-                                            Icons.medical_services_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'Prescription Drugs',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel2,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '85 Products',
-                                          icon: Icon(
-                                            Icons.medication_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'First Aid & Surgical',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel3,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '112 Products',
-                                          icon: Icon(
-                                            Icons.bloodtype_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'Diabetes Monitoring',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel4,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '64 Products',
-                                          icon: Icon(
-                                            Icons.favorite_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'Heart & BP Care',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 8.0)),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Beauty & Personal Care',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight: FontWeight.w800,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w800,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                      Text(
-                                        'See All',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontStyle,
-                                              lineHeight: 1.3,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Wellness & Vitamins',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight: FontWeight.w800,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w800,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                      Text(
-                                        'See All',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontStyle,
-                                              lineHeight: 1.3,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel5,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '320 Products',
-                                          icon: Icon(
-                                            Icons.water_drop_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'Vitamins & Minerals',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .success,
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel6,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '142 Products',
-                                          icon: Icon(
-                                            Icons.fitness_center_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'Sports Performance',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .success,
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.categoryItemModel7,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: CategoryItemWidget(
-                                          count: '98 Products',
-                                          icon: Icon(
-                                            Icons.eco_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
-                                          ),
-                                          title: 'Herbal Remedies',
-                                          tint: FlutterFlowTheme.of(context)
-                                              .success,
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 8.0)),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
-                              ),
-                              Container(
-                                height: 32.0,
-                              ),
-                            ].divide(SizedBox(height: 24.0)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+              child: SingleChildScrollView(
+                primary: false,
+                child: Padding(
+                  padding: EdgeInsets.all(24),
+                  child: const WooCatalogCategoriesWidget(),
                 ),
               ),
             ),

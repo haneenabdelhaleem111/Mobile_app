@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'text_field8_model.dart';
 export 'text_field8_model.dart';
 
@@ -20,20 +23,21 @@ class TextField8Widget extends StatefulWidget {
     String? value,
     String? onChange,
     String? onSubmit,
+    this.onChanged,
     String? variant,
     bool? error,
-  })  : this.label = label ?? '',
-        this.labelPresent = labelPresent ?? false,
-        this.helper = helper ?? '',
-        this.helperPresent = helperPresent ?? false,
-        this.leadingIconPresent = leadingIconPresent ?? true,
-        this.trailingIconPresent = trailingIconPresent ?? true,
-        this.hint = hint ?? 'Search by product or brand...',
-        this.value = value ?? '',
-        this.onChange = onChange ?? '',
-        this.onSubmit = onSubmit ?? '',
-        this.variant = variant ?? 'outlined',
-        this.error = error ?? false;
+  })  : label = label ?? '',
+        labelPresent = labelPresent ?? false,
+        helper = helper ?? '',
+        helperPresent = helperPresent ?? false,
+        leadingIconPresent = leadingIconPresent ?? true,
+        trailingIconPresent = trailingIconPresent ?? true,
+        hint = hint ?? 'Search by product or brand...',
+        value = value ?? '',
+        onChange = onChange ?? '',
+        onSubmit = onSubmit ?? '',
+        variant = variant ?? 'outlined',
+        error = error ?? false;
 
   final String label;
   final bool labelPresent;
@@ -47,6 +51,7 @@ class TextField8Widget extends StatefulWidget {
   final String value;
   final String onChange;
   final String onSubmit;
+  final ValueChanged<String>? onChanged;
   final String variant;
   final bool error;
 
@@ -373,6 +378,7 @@ class _TextField8WidgetState extends State<TextField8Widget> {
                     child: TextFormField(
                       controller: _model.inputTextController,
                       focusNode: _model.inputFocusNode,
+                      onChanged: widget.onChanged,
                       obscureText: false,
                       decoration: InputDecoration(
                         isDense: true,
@@ -510,7 +516,7 @@ class _TextField8WidgetState extends State<TextField8Widget> {
                     lineHeight: 1.4,
                   ),
             ),
-        ].divide(SizedBox(height: 6.0)),
+        ].divide(const SizedBox(height: 6.0)),
       ),
     );
   }

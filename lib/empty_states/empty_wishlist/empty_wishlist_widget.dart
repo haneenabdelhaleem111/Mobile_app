@@ -1,7 +1,10 @@
 import '/components/no_wishlist_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'empty_wishlist_model.dart';
 export 'empty_wishlist_model.dart';
 
@@ -48,7 +51,7 @@ class _EmptyWishlistWidgetState extends State<EmptyWishlistWidget> {
           child: wrapWithModel(
             model: _model.noWishlistModel,
             updateCallback: () => safeSetState(() {}),
-            child: NoWishlistWidget(),
+            child: const NoWishlistWidget(),
           ),
         ),
       ),

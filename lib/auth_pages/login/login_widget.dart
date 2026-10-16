@@ -4,9 +4,12 @@ import '/components/text_field2_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
@@ -59,11 +62,11 @@ class _LoginWidgetState extends State<LoginWidget> {
               children: [
                 Container(
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 24.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        24.0, 48.0, 24.0, 24.0),
                     child: Container(
                       child: Container(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -73,7 +76,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               width: 130.0,
                               height: 130.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
@@ -140,9 +143,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         lineHeight: 1.5,
                                       ),
                                 ),
-                              ].divide(SizedBox(height: 4.0)),
+                              ].divide(const SizedBox(height: 4.0)),
                             ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -152,7 +155,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(6.0),
+                        padding: const EdgeInsets.all(6.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -161,7 +164,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           textBaseline: TextBaseline.alphabetic,
                           children: [
                             Padding(
-                              padding: EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -224,7 +227,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   wrapWithModel(
                                     model: _model.buttonAuthModel,
                                     updateCallback: () => safeSetState(() {}),
-                                    child: ButtonAuthWidget(
+                                    child: const ButtonAuthWidget(
                                       iconPresent: false,
                                       iconEndPresent: false,
                                       content: 'Sign In',
@@ -233,7 +236,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       disabled: false,
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                             ),
                             Row(
@@ -253,7 +256,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   child: wrapWithModel(
                                     model: _model.buttonModel1,
                                     updateCallback: () => safeSetState(() {}),
-                                    child: ButtonFpWidget(
+                                    child: const ButtonFpWidget(
                                       iconPresent: false,
                                       iconEndPresent: false,
                                       content: 'Forgot Password?',
@@ -267,7 +270,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               ],
                             ),
-                          ].divide(SizedBox(height: 24.0)),
+                          ].divide(const SizedBox(height: 24.0)),
                         ),
                       ),
                     ],
@@ -275,12 +278,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
                 Container(
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 70.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment:
@@ -315,7 +318,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -327,7 +330,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 child: wrapWithModel(
                                   model: _model.buttonModel2,
                                   updateCallback: () => safeSetState(() {}),
-                                  child: ButtonFpWidget(
+                                  child: const ButtonFpWidget(
                                     iconPresent: false,
                                     iconEndPresent: false,
                                     content: 'Create Account',

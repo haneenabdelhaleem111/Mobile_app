@@ -4,8 +4,11 @@ import '/components/wishlist_product_card2_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'wishlist_model.dart';
 export 'wishlist_model.dart';
 
@@ -62,8 +65,8 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 24.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 24.0),
                     child: Container(
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -108,7 +111,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                       lineHeight: 1.3,
                                     ),
                               ),
-                            ].divide(SizedBox(width: 16.0)),
+                            ].divide(const SizedBox(width: 16.0)),
                           ),
                         ],
                       ),
@@ -135,7 +138,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -169,7 +172,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                               wrapWithModel(
                                 model: _model.wishlistProductCardModel1,
                                 updateCallback: () => safeSetState(() {}),
-                                child: WishlistProductCard2Widget(
+                                child: const WishlistProductCard2Widget(
                                   imageDesc:
                                       'https://dimg.dreamflow.cloud/v1/image/panadol%20medicine%20box',
                                   name: 'Panadol Advance 500mg - 24 Tablets',
@@ -180,7 +183,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                               wrapWithModel(
                                 model: _model.wishlistProductCardModel2,
                                 updateCallback: () => safeSetState(() {}),
-                                child: WishlistProductCard2Widget(
+                                child: const WishlistProductCard2Widget(
                                   imageDesc:
                                       'https://dimg.dreamflow.cloud/v1/image/white%20skincare%20tube',
                                   name: 'La Roche-Posay Effaclar Duo+ 40ml',
@@ -191,7 +194,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                               wrapWithModel(
                                 model: _model.wishlistProductCardModel3,
                                 updateCallback: () => safeSetState(() {}),
-                                child: WishlistProductCard2Widget(
+                                child: const WishlistProductCard2Widget(
                                   imageDesc:
                                       'https://dimg.dreamflow.cloud/v1/image/blue%20glass%20serum%20bottle',
                                   name: 'Vichy Mineral 89 Booster Serum',
@@ -202,7 +205,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                               wrapWithModel(
                                 model: _model.wishlistProductCardModel4,
                                 updateCallback: () => safeSetState(() {}),
-                                child: WishlistProductCard2Widget(
+                                child: const WishlistProductCard2Widget(
                                   imageDesc: '',
                                   name: 'Oral-B Pro-Expert Toothpaste',
                                   price: 'EGP 120.00',
@@ -210,7 +213,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   child: Container(
@@ -256,7 +259,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                     child: wrapWithModel(
                                       model: _model.productCardModel1,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: ProductCard11Widget(
+                                      child: const ProductCard11Widget(
                                         imageDesc:
                                             'https://dimg.dreamflow.cloud/v1/image/vitamin%20bottle',
                                         name: 'Vitamin C 1000mg',
@@ -270,7 +273,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                     child: wrapWithModel(
                                       model: _model.productCardModel2,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: ProductCard11Widget(
+                                      child: const ProductCard11Widget(
                                         imageDesc:
                                             'https://dimg.dreamflow.cloud/v1/image/small%20gel%20bottle',
                                         name: 'Hand Sanitizer',
@@ -279,9 +282,9 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(width: 16.0)),
+                                ].divide(const SizedBox(width: 16.0)),
                               ),
-                            ].divide(SizedBox(height: 16.0)),
+                            ].divide(const SizedBox(height: 16.0)),
                           ),
                         ),
                       ),

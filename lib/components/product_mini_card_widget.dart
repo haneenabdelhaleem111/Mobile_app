@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_mini_card_model.dart';
 export 'product_mini_card_model.dart';
 
@@ -13,11 +16,11 @@ class ProductMiniCardWidget extends StatefulWidget {
     String? name,
     String? price,
     String? qty,
-  })  : this.img = img ??
+  })  : img = img ??
             'https://dimg.dreamflow.cloud/v1/image/medicine%20box%20antibiotics',
-        this.name = name ?? 'Amoxicillin 500mg',
-        this.price = price ?? 'EGP 150.00',
-        this.qty = qty ?? '2';
+        name = name ?? 'Amoxicillin 500mg',
+        price = price ?? 'EGP 150.00',
+        qty = qty ?? '2';
 
   final String img;
   final String name;
@@ -53,7 +56,7 @@ class _ProductMiniCardWidgetState extends State<ProductMiniCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +68,7 @@ class _ProductMiniCardWidgetState extends State<ProductMiniCardWidget> {
               width: 60.0,
               height: 60.0,
               decoration: BoxDecoration(
-                color: Color(0xFFF1F5F9),
+                color: const Color(0xFFF1F5F9),
                 borderRadius: BorderRadius.circular(12.0),
                 shape: BoxShape.rectangle,
                 border: Border.all(
@@ -74,14 +77,14 @@ class _ProductMiniCardWidgetState extends State<ProductMiniCardWidget> {
                 ),
               ),
               child: CachedNetworkImage(
-                fadeInDuration: Duration(milliseconds: 0),
-                fadeOutDuration: Duration(milliseconds: 0),
+                fadeInDuration: const Duration(milliseconds: 0),
+                fadeOutDuration: const Duration(milliseconds: 0),
                 imageUrl: valueOrDefault<String>(
                   widget.img,
                   'https://dimg.dreamflow.cloud/v1/image/medicine%20box%20antibiotics',
                 ),
                 fit: BoxFit.cover,
-                alignment: Alignment(0.0, 0.0),
+                alignment: const Alignment(0.0, 0.0),
               ),
             ),
           ),
@@ -138,7 +141,7 @@ class _ProductMiniCardWidgetState extends State<ProductMiniCardWidget> {
                         lineHeight: 1.2,
                       ),
                 ),
-              ].divide(SizedBox(height: 4.0)),
+              ].divide(const SizedBox(height: 4.0)),
             ),
           ),
           Text(
@@ -159,7 +162,7 @@ class _ProductMiniCardWidgetState extends State<ProductMiniCardWidget> {
                   lineHeight: 1.4,
                 ),
           ),
-        ].divide(SizedBox(width: 16.0)),
+        ].divide(const SizedBox(width: 16.0)),
       ),
     );
   }

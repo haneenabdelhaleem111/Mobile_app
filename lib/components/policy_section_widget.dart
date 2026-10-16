@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'policy_section_model.dart';
 export 'policy_section_model.dart';
 
@@ -10,9 +13,9 @@ class PolicySectionWidget extends StatefulWidget {
     super.key,
     String? content,
     String? title,
-  })  : this.content = content ??
+  })  : content = content ??
             'By using El-Emshaty Pharmacy services, you agree to comply with our professional healthcare standards and local regulations regarding pharmaceutical distribution.',
-        this.title = title ?? '1. General Terms';
+        title = title ?? '1. General Terms';
 
   final String content;
   final String title;
@@ -85,7 +88,7 @@ class _PolicySectionWidgetState extends State<PolicySectionWidget> {
                 lineHeight: 1.5,
               ),
         ),
-      ].divide(SizedBox(height: 8.0)),
+      ].divide(const SizedBox(height: 8.0)),
     );
   }
 }

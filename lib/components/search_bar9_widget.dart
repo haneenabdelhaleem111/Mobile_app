@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'search_bar9_model.dart';
 export 'search_bar9_model.dart';
 
@@ -9,7 +12,7 @@ class SearchBar9Widget extends StatefulWidget {
   const SearchBar9Widget({
     super.key,
     String? hint,
-  }) : this.hint = hint ?? 'Search medicines, brands...';
+  }) : hint = hint ?? 'Search medicines, brands...';
 
   final String hint;
 
@@ -43,7 +46,7 @@ class _SearchBar9WidgetState extends State<SearchBar9Widget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFF1F5F9),
+        color: const Color(0xFFF1F5F9),
         borderRadius: BorderRadius.circular(9999.0),
         shape: BoxShape.rectangle,
         border: Border.all(
@@ -52,7 +55,7 @@ class _SearchBar9WidgetState extends State<SearchBar9Widget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 8.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 8.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -101,7 +104,7 @@ class _SearchBar9WidgetState extends State<SearchBar9Widget> {
                 color: FlutterFlowTheme.of(context).primary,
                 size: 20.0,
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ].divide(const SizedBox(width: 16.0)),
           ),
         ),
       ),

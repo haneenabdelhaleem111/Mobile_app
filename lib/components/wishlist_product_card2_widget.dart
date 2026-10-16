@@ -1,9 +1,12 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'wishlist_product_card2_model.dart';
 export 'wishlist_product_card2_model.dart';
 
@@ -14,11 +17,11 @@ class WishlistProductCard2Widget extends StatefulWidget {
     String? name,
     String? price,
     bool? inStock,
-  })  : this.imageDesc = imageDesc ??
+  })  : imageDesc = imageDesc ??
             'https://dimg.dreamflow.cloud/v1/image/panadol%20medicine%20box',
-        this.name = name ?? 'Panadol Advance 500mg - 24 Tablets',
-        this.price = price ?? 'EGP 40.00',
-        this.inStock = inStock ?? true;
+        name = name ?? 'Panadol Advance 500mg - 24 Tablets',
+        price = price ?? 'EGP 40.00',
+        inStock = inStock ?? true;
 
   final String imageDesc;
   final String name;
@@ -66,7 +69,7 @@ class _WishlistProductCard2WidgetState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -79,19 +82,19 @@ class _WishlistProductCard2WidgetState
                   width: 80.0,
                   height: 80.0,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF1F5F9),
+                    color: const Color(0xFFF1F5F9),
                     borderRadius: BorderRadius.circular(12.0),
                     shape: BoxShape.rectangle,
                   ),
                   child: CachedNetworkImage(
-                    fadeInDuration: Duration(milliseconds: 0),
-                    fadeOutDuration: Duration(milliseconds: 0),
+                    fadeInDuration: const Duration(milliseconds: 0),
+                    fadeOutDuration: const Duration(milliseconds: 0),
                     imageUrl: valueOrDefault<String>(
                       widget.imageDesc,
                       'https://dimg.dreamflow.cloud/v1/image/panadol%20medicine%20box',
                     ),
                     fit: BoxFit.contain,
-                    alignment: Alignment(0.0, 0.0),
+                    alignment: const Alignment(0.0, 0.0),
                   ),
                 ),
               ),
@@ -209,9 +212,9 @@ class _WishlistProductCard2WidgetState
                                 lineHeight: 1.2,
                               ),
                         ),
-                      ].divide(SizedBox(width: 4.0)),
+                      ].divide(const SizedBox(width: 4.0)),
                     ),
-                  ].divide(SizedBox(height: 4.0)),
+                  ].divide(const SizedBox(height: 4.0)),
                 ),
               ),
               Column(
@@ -235,7 +238,7 @@ class _WishlistProductCard2WidgetState
                   FlutterFlowIconButton(
                     borderRadius: 9999.0,
                     buttonSize: 40.0,
-                    fillColor: Color(0x1A0056B3),
+                    fillColor: const Color(0x1A0056B3),
                     icon: Icon(
                       Icons.add_shopping_cart_rounded,
                       color: FlutterFlowTheme.of(context).primary,
@@ -245,9 +248,9 @@ class _WishlistProductCard2WidgetState
                       print('IconButton pressed ...');
                     },
                   ),
-                ].divide(SizedBox(height: 8.0)),
+                ].divide(const SizedBox(height: 8.0)),
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ].divide(const SizedBox(width: 16.0)),
           ),
         ),
       ),

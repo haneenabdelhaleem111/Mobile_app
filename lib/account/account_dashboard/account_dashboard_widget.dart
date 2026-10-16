@@ -4,9 +4,12 @@ import '/components/quick_stat_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'account_dashboard_model.dart';
 export 'account_dashboard_model.dart';
 
@@ -61,8 +64,8 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                   shape: BoxShape.rectangle,
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 32.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      24.0, 32.0, 24.0, 32.0),
                   child: Container(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -83,7 +86,7 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                                 borderRadius: BorderRadius.circular(50.0),
                                 shape: BoxShape.rectangle,
                               ),
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 'AE',
                                 textAlign: TextAlign.center,
@@ -175,17 +178,18 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                                         ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 4.0, 0.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 4.0, 0.0, 0.0),
                                     child: Container(),
                                   ),
-                                ].divide(SizedBox(height: 4.0)),
+                                ].divide(const SizedBox(height: 4.0)),
                               ),
                             ),
-                          ].divide(SizedBox(width: 24.0)),
+                          ].divide(const SizedBox(width: 24.0)),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -198,7 +202,7 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                                 child: wrapWithModel(
                                   model: _model.quickStatModel1,
                                   updateCallback: () => safeSetState(() {}),
-                                  child: QuickStatWidget(
+                                  child: const QuickStatWidget(
                                     label: 'Total Orders',
                                     value: '12',
                                   ),
@@ -209,22 +213,22 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                                 child: wrapWithModel(
                                   model: _model.quickStatModel2,
                                   updateCallback: () => safeSetState(() {}),
-                                  child: QuickStatWidget(
+                                  child: const QuickStatWidget(
                                     label: 'Points',
                                     value: '450',
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(width: 10.0)),
+                            ].divide(const SizedBox(width: 10.0)),
                           ),
                         ),
-                      ].divide(SizedBox(height: 16.0)),
+                      ].divide(const SizedBox(height: 16.0)),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(24.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -321,7 +325,7 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(height: 16.0)),
+                      ].divide(const SizedBox(height: 16.0)),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -458,7 +462,7 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(height: 16.0)),
+                      ].divide(const SizedBox(height: 16.0)),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
@@ -536,11 +540,11 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(height: 16.0)),
+                      ].divide(const SizedBox(height: 16.0)),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 40.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 12.0, 0.0, 40.0),
                       child: Container(
                         child: Container(
                           child: wrapWithModel(
@@ -565,7 +569,7 @@ class _AccountDashboardWidgetState extends State<AccountDashboardWidget> {
                         ),
                       ),
                     ),
-                  ].divide(SizedBox(height: 24.0)),
+                  ].divide(const SizedBox(height: 24.0)),
                 ),
               ),
             ],

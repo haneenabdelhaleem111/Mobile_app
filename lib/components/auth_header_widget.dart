@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'auth_header_model.dart';
 export 'auth_header_model.dart';
 
@@ -10,9 +13,9 @@ class AuthHeaderWidget extends StatefulWidget {
     super.key,
     String? subtitle,
     String? title,
-  })  : this.subtitle = subtitle ??
+  })  : subtitle = subtitle ??
             'No worries! Enter your email address below and we\'ll send you a link to reset your password.',
-        this.title = title ?? 'Forgot Password?';
+        title = title ?? 'Forgot Password?';
 
   final String subtitle;
   final String title;
@@ -54,11 +57,11 @@ class _AuthHeaderWidgetState extends State<AuthHeaderWidget> {
           width: 80.0,
           height: 80.0,
           decoration: BoxDecoration(
-            color: Color(0x1A0056B3),
+            color: const Color(0x1A0056B3),
             borderRadius: BorderRadius.circular(9999.0),
             shape: BoxShape.rectangle,
           ),
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Icon(
             Icons.lock_reset_rounded,
             color: FlutterFlowTheme.of(context).vibrantColor,
@@ -115,9 +118,9 @@ class _AuthHeaderWidgetState extends State<AuthHeaderWidget> {
                     lineHeight: 1.5,
                   ),
             ),
-          ].divide(SizedBox(height: 4.0)),
+          ].divide(const SizedBox(height: 4.0)),
         ),
-      ].divide(SizedBox(height: 16.0)),
+      ].divide(const SizedBox(height: 16.0)),
     );
   }
 }

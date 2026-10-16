@@ -2,8 +2,11 @@ import '/components/button3_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'popup_advertisement2_model.dart';
 export 'popup_advertisement2_model.dart';
 
@@ -14,12 +17,11 @@ class PopupAdvertisement2Widget extends StatefulWidget {
     String? imageDesc,
     String? subtitle,
     String? title,
-  })  : this.buttonText = buttonText ?? 'Shop Now',
-        this.imageDesc =
+  })  : buttonText = buttonText ?? 'Shop Now',
+        imageDesc =
             imageDesc ?? 'https://dimg.dreamflow.cloud/v1/image/Image%20Desc',
-        this.subtitle =
-            subtitle ?? 'Save up to 40% on your first order this week.',
-        this.title = title ?? 'Special Summer Sale';
+        subtitle = subtitle ?? 'Save up to 40% on your first order this week.',
+        title = title ?? 'Special Summer Sale';
 
   final String buttonText;
   final String imageDesc;
@@ -56,16 +58,16 @@ class _PopupAdvertisement2WidgetState extends State<PopupAdvertisement2Widget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       children: [
         Container(
-          decoration: BoxDecoration(
-            color: Color(0x99000000),
+          decoration: const BoxDecoration(
+            color: const Color(0x99000000),
             shape: BoxShape.rectangle,
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(24.0),
           child: Container(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(24.0),
@@ -82,7 +84,7 @@ class _PopupAdvertisement2WidgetState extends State<PopupAdvertisement2Widget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(24.0),
+                      padding: const EdgeInsets.all(24.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -151,7 +153,7 @@ class _PopupAdvertisement2WidgetState extends State<PopupAdvertisement2Widget> {
                                       lineHeight: 1.5,
                                     ),
                               ),
-                            ].divide(SizedBox(height: 4.0)),
+                            ].divide(const SizedBox(height: 4.0)),
                           ),
                           wrapWithModel(
                             model: _model.buttonModel,
@@ -170,7 +172,7 @@ class _PopupAdvertisement2WidgetState extends State<PopupAdvertisement2Widget> {
                               disabled: false,
                             ),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),
                   ],
@@ -180,10 +182,10 @@ class _PopupAdvertisement2WidgetState extends State<PopupAdvertisement2Widget> {
           ),
         ),
         Align(
-          alignment: AlignmentDirectional(1.0, -1.0),
+          alignment: const AlignmentDirectional(1.0, -1.0),
           child: Container(
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Container(
                 child: FlutterFlowIconButton(
                   borderRadius: 9999.0,

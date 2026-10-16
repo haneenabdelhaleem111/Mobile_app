@@ -1,8 +1,11 @@
 import '/components/button_auth_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'empty_state_server_model.dart';
 export 'empty_state_server_model.dart';
 
@@ -10,7 +13,7 @@ class EmptyStateServerWidget extends StatefulWidget {
   const EmptyStateServerWidget({
     super.key,
     String? type,
-  }) : this.type = type ?? 'empty_cart';
+  }) : type = type ?? 'empty_cart';
 
   final String type;
 
@@ -44,10 +47,10 @@ class _EmptyStateServerWidgetState extends State<EmptyStateServerWidget> {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.all(48.0),
+        padding: const EdgeInsets.all(48.0),
         child: Container(
           child: Container(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -57,11 +60,11 @@ class _EmptyStateServerWidgetState extends State<EmptyStateServerWidget> {
                   width: 120.0,
                   height: 120.0,
                   decoration: BoxDecoration(
-                    color: Color(0x1A0056B3),
+                    color: const Color(0x1A0056B3),
                     borderRadius: BorderRadius.circular(9999.0),
                     shape: BoxShape.rectangle,
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Icon(
                     Icons.cloud_off_sharp,
                     color: FlutterFlowTheme.of(context).vibrantColor,
@@ -120,10 +123,11 @@ class _EmptyStateServerWidgetState extends State<EmptyStateServerWidget> {
                             lineHeight: 1.5,
                           ),
                     ),
-                  ].divide(SizedBox(height: 8.0)),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      16.0, 0.0, 16.0, 0.0),
                   child: Container(
                     child: Container(),
                   ),
@@ -131,7 +135,7 @@ class _EmptyStateServerWidgetState extends State<EmptyStateServerWidget> {
                 wrapWithModel(
                   model: _model.buttonAuthModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: ButtonAuthWidget(
+                  child: const ButtonAuthWidget(
                     iconPresent: false,
                     iconEndPresent: false,
                     content: 'Refresh',
@@ -140,7 +144,7 @@ class _EmptyStateServerWidgetState extends State<EmptyStateServerWidget> {
                     disabled: false,
                   ),
                 ),
-              ].divide(SizedBox(height: 24.0)),
+              ].divide(const SizedBox(height: 24.0)),
             ),
           ),
         ),

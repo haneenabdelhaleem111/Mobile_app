@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'filter_chip_model.dart';
 export 'filter_chip_model.dart';
 
@@ -10,8 +13,8 @@ class FilterChipWidget extends StatefulWidget {
     super.key,
     String? label,
     bool? selected,
-  })  : this.label = label ?? 'All Products',
-        this.selected = selected ?? true;
+  })  : label = label ?? 'All Products',
+        selected = selected ?? true;
 
   final String label;
   final bool selected;
@@ -79,7 +82,7 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -119,12 +122,12 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
                 widget.selected,
                 true,
               ))
-                Icon(
+                const Icon(
                   Icons.close_rounded,
                   color: Colors.white,
                   size: 14.0,
                 ),
-            ].divide(SizedBox(width: 4.0)),
+            ].divide(const SizedBox(width: 4.0)),
           ),
         ),
       ),

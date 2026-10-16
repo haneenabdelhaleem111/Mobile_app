@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'summary_item_model.dart';
 export 'summary_item_model.dart';
 
@@ -10,8 +13,8 @@ class SummaryItemWidget extends StatefulWidget {
     super.key,
     String? label,
     String? value,
-  })  : this.label = label ?? 'Subtotal',
-        this.value = value ?? 'EGP 235.00';
+  })  : label = label ?? 'Subtotal',
+        value = value ?? 'EGP 235.00';
 
   final String label;
   final String value;

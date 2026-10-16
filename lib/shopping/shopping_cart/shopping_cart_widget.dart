@@ -1,3 +1,4 @@
+import 'dart:async';
 import '/components/button9_widget.dart';
 import '/components/cart_item_widget.dart';
 import '/components/summary_row_widget.dart';
@@ -5,13 +6,17 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
+import '/backend/woocommerce/cart_models.dart';
+import '/backend/woocommerce/woocommerce_cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'shopping_cart_model.dart';
 export 'shopping_cart_model.dart';
 
 class ShoppingCartWidget extends StatefulWidget {
-  const ShoppingCartWidget({super.key});
+  const ShoppingCartWidget({super.key, this.cartController});
+
+  final WooCommerceCartController? cartController;
 
   static String routeName = 'shopping_cart';
   static String routePath = '/shoppingCart';
@@ -22,6 +27,7 @@ class ShoppingCartWidget extends StatefulWidget {
 
 class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
   late ShoppingCartModel _model;
+  late WooCommerceCartController _cartController;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -29,17 +35,134 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ShoppingCartModel());
+    _cartController =
+        widget.cartController ?? WooCommerceCartController.instance;
+    _cartController.addListener(_onCartChanged);
+    unawaited(_cartController.refreshCart());
+  }
+
+  void _onCartChanged() {
+    if (mounted) safeSetState(() {});
   }
 
   @override
   void dispose() {
+    _cartController.removeListener(_onCartChanged);
     _model.dispose();
 
     super.dispose();
   }
 
+  Widget _buildCartItem(WooCartItem item) {
+    final regularPrice = item.prices.regularPrice;
+    final currentPrice = item.prices.price;
+    return CartItemWidget(
+      key: ValueKey(item.key),
+      brand: item.sku.isEmpty ? 'Product' : item.sku,
+      imageDesc: item.images.isEmpty ? '' : item.images.first,
+      name: item.name,
+      price: _formatPrice(
+        currentPrice,
+        item.prices.currencySymbol,
+        item.prices.currencyCode,
+        item.prices.currencyMinorUnit,
+      ),
+      qty: '${item.quantity}',
+      hasDiscount: regularPrice != null &&
+          currentPrice != null &&
+          regularPrice > currentPrice,
+      originalPrice: _formatPrice(
+        regularPrice,
+        item.prices.currencySymbol,
+        item.prices.currencyCode,
+        item.prices.currencyMinorUnit,
+      ),
+      isBusy: _cartController.isMutationInProgress,
+      onDecrease: item.quantity > 1
+          ? () => _cartController.updateItem(
+                key: item.key,
+                quantity: item.quantity - 1,
+              )
+          : null,
+      onIncrease: () => _cartController.updateItem(
+        key: item.key,
+        quantity: item.quantity + 1,
+      ),
+      onRemove: () => _cartController.removeItem(key: item.key),
+    );
+  }
+
+  Widget _cartMessage(String message, {Future<void> Function()? onRetry}) =>
+      Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              message == 'Your cart is empty.'
+                  ? Icons.shopping_cart_outlined
+                  : Icons.cloud_off_outlined,
+              size: 40,
+              color: FlutterFlowTheme.of(context).secondaryText,
+            ),
+            const SizedBox(height: 12),
+            Text(message, textAlign: TextAlign.center),
+            if (onRetry != null)
+              TextButton(
+                onPressed: () => onRetry(),
+                child: const Text('Refresh cart'),
+              ),
+          ],
+        ),
+      );
+
+  Widget _cartErrorBanner() => Padding(
+        padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+        child: Material(
+          color: FlutterFlowTheme.of(context).error.withValues(alpha: .08),
+          borderRadius: BorderRadius.circular(12),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Expanded(child: Text(_cartController.errorMessage!)),
+                TextButton(
+                  onPressed: _cartController.isLoading
+                      ? null
+                      : _cartController.refreshCart,
+                  child: const Text('Retry'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+  String _formatCartAmount(num? amount, WooCartTotals? totals) => totals == null
+      ? '—'
+      : _formatPrice(
+          amount,
+          totals.currencySymbol,
+          totals.currencyCode,
+          totals.currencyMinorUnit,
+        );
+
+  String _formatPrice(
+    num? amount,
+    String currencySymbol,
+    String currencyCode,
+    int minorUnit,
+  ) {
+    if (amount == null) return '—';
+    final currency = currencySymbol.isNotEmpty ? currencySymbol : currencyCode;
+    final digits = minorUnit.clamp(0, 4).toInt();
+    final value = amount.toStringAsFixed(digits);
+    return currency.isEmpty ? value : '$currency $value';
+  }
+
   @override
   Widget build(BuildContext context) {
+    final cart = _cartController.cart;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -63,8 +186,8 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        24.0, 24.0, 24.0, 16.0),
                     child: Container(
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -111,7 +234,7 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                                       lineHeight: 1.3,
                                     ),
                               ),
-                            ].divide(SizedBox(width: 8.0)),
+                            ].divide(const SizedBox(width: 8.0)),
                           ),
                         ],
                       ),
@@ -138,14 +261,14 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 16.0, 0.0, 0.0),
                         child: Container(
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
@@ -160,7 +283,7 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Container(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -238,7 +361,7 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                                                 lineHeight: 1.3,
                                               ),
                                         ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                      ].divide(const SizedBox(width: 16.0)),
                                     ),
                                   ),
                                 ),
@@ -248,56 +371,42 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              wrapWithModel(
-                                model: _model.cartItemModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: CartItemWidget(
-                                  brand: 'GSK',
-                                  imageDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/white%20medicine%20box%20with%20blue%20text',
-                                  name: 'Panadol Advance 500mg',
-                                  price: 'EGP 45.00',
-                                  qty: '2',
-                                  hasDiscount: true,
-                                  originalPrice: '60.00',
+                              if (_cartController.isLoading && cart != null)
+                                const LinearProgressIndicator(),
+                              if (_cartController.isLoading && cart == null)
+                                const Padding(
+                                  padding: EdgeInsets.all(32),
+                                  child: Center(
+                                      child: CircularProgressIndicator()),
+                                )
+                              else if (cart == null)
+                                _cartMessage(
+                                  _cartController.errorMessage ??
+                                      'Your cart is unavailable.',
+                                  onRetry: _cartController.refreshCart,
+                                )
+                              else if (cart.items.isEmpty) ...[
+                                if (_cartController.errorMessage != null)
+                                  _cartErrorBanner(),
+                                _cartMessage(
+                                  'Your cart is empty.',
+                                  onRetry: _cartController.isLoading
+                                      ? null
+                                      : _cartController.refreshCart,
                                 ),
-                              ),
-                              wrapWithModel(
-                                model: _model.cartItemModel2,
-                                updateCallback: () => safeSetState(() {}),
-                                child: CartItemWidget(
-                                  brand: 'La Roche-Posay',
-                                  imageDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/blue%20and%20white%20skincare%20tube',
-                                  name: 'La Roche-Posay Effaclar',
-                                  price: 'EGP 650.00',
-                                  qty: '1',
-                                  hasDiscount: true,
-                                  originalPrice: '60.00',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.cartItemModel3,
-                                updateCallback: () => safeSetState(() {}),
-                                child: CartItemWidget(
-                                  brand: 'Centrum',
-                                  imageDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/vitamin%20bottle',
-                                  name: 'Centrum Lutein Vitamins',
-                                  price: 'EGP 320.00',
-                                  qty: '1',
-                                  hasDiscount: true,
-                                  originalPrice: '60.00',
-                                ),
-                              ),
-                            ].divide(SizedBox(height: 16.0)),
+                              ] else ...[
+                                if (_cartController.errorMessage != null)
+                                  _cartErrorBanner(),
+                                ...cart.items.map(_buildCartItem),
+                              ],
+                            ].divide(const SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
@@ -306,106 +415,124 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                 ),
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 12.0,
-                      color: Color(0x0F000000),
-                      offset: Offset(
-                        0.0,
-                        -4.0,
-                      ),
-                      spreadRadius: 0.0,
-                    )
-                  ],
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24.0),
-                    topRight: Radius.circular(24.0),
+            Visibility(
+              visible: cart?.items.isNotEmpty == true,
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 12.0,
+                        color: const Color(0x0F000000),
+                        offset: const Offset(
+                          0.0,
+                          -4.0,
+                        ),
+                        spreadRadius: 0.0,
+                      )
+                    ],
+                    borderRadius: const BorderRadius.only(
+                      topLeft: const Radius.circular(24.0),
+                      topRight: const Radius.circular(24.0),
+                    ),
+                    shape: BoxShape.rectangle,
                   ),
-                  shape: BoxShape.rectangle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(24.0),
-                  child: Container(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        wrapWithModel(
-                          model: _model.summaryRowModel1,
-                          updateCallback: () => safeSetState(() {}),
-                          child: SummaryRowWidget(
-                            label: 'Subtotal',
-                            value: 'EGP 1,060.00',
-                            color: 'success',
-                            isTotal: false,
-                            bold: true,
-                          ),
-                        ),
-                        wrapWithModel(
-                          model: _model.summaryRowModel2,
-                          updateCallback: () => safeSetState(() {}),
-                          child: SummaryRowWidget(
-                            label: 'Delivery Fee',
-                            value: 'EGP 25.00',
-                            color: 'success',
-                            isTotal: false,
-                            bold: true,
-                          ),
-                        ),
-                        Divider(
-                          height: 16.0,
-                          thickness: 1.0,
-                          indent: 0.0,
-                          endIndent: 0.0,
-                          color: FlutterFlowTheme.of(context).alternate,
-                        ),
-                        wrapWithModel(
-                          model: _model.summaryRowModel3,
-                          updateCallback: () => safeSetState(() {}),
-                          child: SummaryRowWidget(
-                            label: 'Total Amount',
-                            value: 'EGP 1,085.00',
-                            color: 'success',
-                            isTotal: true,
-                            bold: true,
-                          ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(CheckoutDeliveryWidget.routeName);
-                          },
-                          child: wrapWithModel(
-                            model: _model.buttonModel,
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Container(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          wrapWithModel(
+                            model: _model.summaryRowModel1,
                             updateCallback: () => safeSetState(() {}),
-                            child: Button9Widget(
-                              iconPresent: false,
-                              iconEnd: Icon(
-                                Icons.arrow_forward_rounded,
-                                color: FlutterFlowTheme.of(context)
-                                    .lightMutedColor,
-                                size: 24.0,
+                            child: SummaryRowWidget(
+                              label: 'Subtotal',
+                              value: _formatCartAmount(
+                                cart?.totals.totalItems,
+                                cart?.totals,
                               ),
-                              iconEndPresent: true,
-                              content: 'Proceed to Checkout',
-                              variant: 'primary',
-                              size: 'large',
-                              fullWidth: true,
-                              loading: false,
-                              disabled: false,
+                              color: 'success',
+                              isTotal: false,
+                              bold: true,
                             ),
                           ),
-                        ),
-                      ].divide(SizedBox(height: 16.0)),
+                          wrapWithModel(
+                            model: _model.summaryRowModel2,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SummaryRowWidget(
+                              label: 'Delivery Fee',
+                              value: _formatCartAmount(
+                                cart?.totals.totalShipping,
+                                cart?.totals,
+                              ),
+                              color: 'success',
+                              isTotal: false,
+                              bold: true,
+                            ),
+                          ),
+                          Divider(
+                            height: 16.0,
+                            thickness: 1.0,
+                            indent: 0.0,
+                            endIndent: 0.0,
+                            color: FlutterFlowTheme.of(context).alternate,
+                          ),
+                          wrapWithModel(
+                            model: _model.summaryRowModel3,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SummaryRowWidget(
+                              label: 'Total Amount',
+                              value: _formatCartAmount(
+                                cart?.totals.totalPrice,
+                                cart?.totals,
+                              ),
+                              color: 'success',
+                              isTotal: true,
+                              bold: true,
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (_cartController.isMutationInProgress ||
+                                  cart == null ||
+                                  cart.items.isEmpty) {
+                                return;
+                              }
+                              context
+                                  .pushNamed(CheckoutDeliveryWidget.routeName);
+                            },
+                            child: wrapWithModel(
+                              model: _model.buttonModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: Button9Widget(
+                                iconPresent: false,
+                                iconEnd: Icon(
+                                  Icons.arrow_forward_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .lightMutedColor,
+                                  size: 24.0,
+                                ),
+                                iconEndPresent: true,
+                                content: 'Proceed to Checkout',
+                                variant: 'primary',
+                                size: 'large',
+                                fullWidth: true,
+                                loading: false,
+                                disabled: _cartController.isMutationInProgress,
+                              ),
+                            ),
+                          ),
+                        ].divide(const SizedBox(height: 16.0)),
+                      ),
                     ),
                   ),
                 ),

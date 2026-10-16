@@ -2,9 +2,12 @@ import '/components/button23_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'emshaty_product_card_model.dart';
 export 'emshaty_product_card_model.dart';
 
@@ -15,11 +18,11 @@ class EmshatyProductCardWidget extends StatefulWidget {
     String? name,
     String? price,
     String? oldPrice,
-  })  : this.imgDesc = imgDesc ??
+  })  : imgDesc = imgDesc ??
             'https://dimg.dreamflow.cloud/v1/image/box%20of%20panadol%20medicine',
-        this.name = name ?? 'Panadol Advance 500mg',
-        this.price = price ?? 'EGP 45.00',
-        this.oldPrice = oldPrice ?? 'EGP 55.00';
+        name = name ?? 'Panadol Advance 500mg',
+        price = price ?? 'EGP 45.00',
+        oldPrice = oldPrice ?? 'EGP 55.00';
 
   final String imgDesc;
   final String name;
@@ -73,35 +76,35 @@ class _EmshatyProductCardWidgetState extends State<EmshatyProductCardWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
+            SizedBox(
               height: 140.0,
               child: Stack(
-                alignment: AlignmentDirectional(-1.0, -1.0),
+                alignment: const AlignmentDirectional(-1.0, -1.0),
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: CachedNetworkImage(
-                      fadeInDuration: Duration(milliseconds: 0),
-                      fadeOutDuration: Duration(milliseconds: 0),
+                      fadeInDuration: const Duration(milliseconds: 0),
+                      fadeOutDuration: const Duration(milliseconds: 0),
                       imageUrl: valueOrDefault<String>(
                         widget.imgDesc,
                         'https://dimg.dreamflow.cloud/v1/image/box%20of%20panadol%20medicine',
                       ),
                       fit: BoxFit.contain,
-                      alignment: Alignment(0.0, 0.0),
+                      alignment: const Alignment(0.0, 0.0),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(1.0, -1.0),
+                    alignment: const AlignmentDirectional(1.0, -1.0),
                     child: Container(
                       child: Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Container(
                           child: FlutterFlowIconButton(
                             borderRadius: 9999.0,
                             buttonSize: 40.0,
-                            fillColor: Color(0xCCFFFFFF),
-                            icon: Icon(
+                            fillColor: const Color(0xCCFFFFFF),
+                            icon: const Icon(
                               Icons.favorite_border_rounded,
                               size: 18.0,
                             ),
@@ -117,13 +120,13 @@ class _EmshatyProductCardWidgetState extends State<EmshatyProductCardWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     height: 40.0,
                     child: Text(
                       valueOrDefault<String>(
@@ -206,12 +209,12 @@ class _EmshatyProductCardWidgetState extends State<EmshatyProductCardWidget> {
                               lineHeight: 1.4,
                             ),
                       ),
-                    ].divide(SizedBox(width: 4.0)),
+                    ].divide(const SizedBox(width: 4.0)),
                   ),
                   wrapWithModel(
                     model: _model.buttonModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: Button23Widget(
+                    child: const Button23Widget(
                       iconPresent: false,
                       iconEndPresent: false,
                       content: 'Add to Cart',
@@ -222,7 +225,7 @@ class _EmshatyProductCardWidgetState extends State<EmshatyProductCardWidget> {
                       disabled: false,
                     ),
                   ),
-                ].divide(SizedBox(height: 4.0)),
+                ].divide(const SizedBox(height: 4.0)),
               ),
             ),
           ],

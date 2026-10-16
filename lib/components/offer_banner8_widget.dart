@@ -1,9 +1,12 @@
 import '/components/button8_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'offer_banner8_model.dart';
 export 'offer_banner8_model.dart';
 
@@ -13,10 +16,10 @@ class OfferBanner8Widget extends StatefulWidget {
     String? imageDesc,
     String? subtitle,
     String? title,
-  })  : this.imageDesc = imageDesc ??
+  })  : imageDesc = imageDesc ??
             'https://dimg.dreamflow.cloud/v1/image/luxury%20skincare%20bottles%20with%20water%20droplets',
-        this.subtitle = subtitle ?? 'Up to 30% off on La Roche-Posay & Vichy',
-        this.title = title ?? 'Dermacosmetics';
+        subtitle = subtitle ?? 'Up to 30% off on La Roche-Posay & Vichy',
+        title = title ?? 'Dermacosmetics';
 
   final String imageDesc;
   final String subtitle;
@@ -60,38 +63,38 @@ class _OfferBanner8WidgetState extends State<OfferBanner8Widget> {
           shape: BoxShape.rectangle,
         ),
         child: Stack(
-          alignment: AlignmentDirectional(-1.0, -1.0),
+          alignment: const AlignmentDirectional(-1.0, -1.0),
           children: [
             Opacity(
               opacity: 0.4,
               child: CachedNetworkImage(
-                fadeInDuration: Duration(milliseconds: 0),
-                fadeOutDuration: Duration(milliseconds: 0),
+                fadeInDuration: const Duration(milliseconds: 0),
+                fadeOutDuration: const Duration(milliseconds: 0),
                 imageUrl: valueOrDefault<String>(
                   widget.imageDesc,
                   'https://dimg.dreamflow.cloud/v1/image/luxury%20skincare%20bottles%20with%20water%20droplets',
                 ),
                 fit: BoxFit.cover,
-                alignment: Alignment(0.0, 0.0),
+                alignment: const Alignment(0.0, 0.0),
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color(0xCC0056B3), Colors.transparent],
-                  stops: [0.0, 1.0],
-                  begin: AlignmentDirectional(-1.0, 0.0),
-                  end: AlignmentDirectional(1.0, 0),
+              decoration: const BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: const [Color(0xCC0056B3), Colors.transparent],
+                  stops: const [0.0, 1.0],
+                  begin: const AlignmentDirectional(-1.0, 0.0),
+                  end: const AlignmentDirectional(1.0, 0),
                 ),
                 shape: BoxShape.rectangle,
               ),
             ),
             Container(
               child: Padding(
-                padding: EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(24.0),
                 child: Container(
                   child: Container(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -142,7 +145,7 @@ class _OfferBanner8WidgetState extends State<OfferBanner8Widget> {
                                           .bodySmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xE6FFFFFF),
+                                    color: const Color(0xE6FFFFFF),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodySmall
@@ -153,17 +156,17 @@ class _OfferBanner8WidgetState extends State<OfferBanner8Widget> {
                                     lineHeight: 1.4,
                                   ),
                             ),
-                          ].divide(SizedBox(height: 4.0)),
+                          ].divide(const SizedBox(height: 4.0)),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               4.0, 0.0, 4.0, 0.0),
                           child: Container(
                             child: Container(
                               child: wrapWithModel(
                                 model: _model.buttonModel,
                                 updateCallback: () => safeSetState(() {}),
-                                child: Button8Widget(
+                                child: const Button8Widget(
                                   iconPresent: false,
                                   iconEndPresent: false,
                                   content: 'Shop Now',
@@ -177,7 +180,7 @@ class _OfferBanner8WidgetState extends State<OfferBanner8Widget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(height: 8.0)),
+                      ].divide(const SizedBox(height: 8.0)),
                     ),
                   ),
                 ),

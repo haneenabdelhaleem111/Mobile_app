@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'quick_stat_model.dart';
 export 'quick_stat_model.dart';
 
@@ -10,8 +13,8 @@ class QuickStatWidget extends StatefulWidget {
     super.key,
     String? label,
     String? value,
-  })  : this.label = label ?? 'Total Orders',
-        this.value = value ?? '12';
+  })  : label = label ?? 'Total Orders',
+        value = value ?? '12';
 
   final String label;
   final String value;
@@ -55,7 +58,7 @@ class _QuickStatWidgetState extends State<QuickStatWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -102,7 +105,7 @@ class _QuickStatWidgetState extends State<QuickStatWidget> {
                       lineHeight: 1.2,
                     ),
               ),
-            ].divide(SizedBox(height: 4.0)),
+            ].divide(const SizedBox(height: 4.0)),
           ),
         ),
       ),

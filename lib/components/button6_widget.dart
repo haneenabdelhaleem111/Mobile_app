@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'button6_model.dart';
 export 'button6_model.dart';
 
@@ -19,14 +22,14 @@ class Button6Widget extends StatefulWidget {
     bool? fullWidth,
     bool? loading,
     bool? disabled,
-  })  : this.iconPresent = iconPresent ?? false,
-        this.iconEndPresent = iconEndPresent ?? false,
-        this.content = content ?? 'SlotValue(\$btn_text)',
-        this.variant = variant ?? 'outline',
-        this.size = size ?? 'small',
-        this.fullWidth = fullWidth ?? false,
-        this.loading = loading ?? false,
-        this.disabled = disabled ?? false;
+  })  : iconPresent = iconPresent ?? false,
+        iconEndPresent = iconEndPresent ?? false,
+        content = content ?? 'SlotValue(\$btn_text)',
+        variant = variant ?? 'outline',
+        size = size ?? 'small',
+        fullWidth = fullWidth ?? false,
+        loading = loading ?? false,
+        disabled = disabled ?? false;
 
   final Widget? icon;
   final bool iconPresent;
@@ -218,7 +221,7 @@ class _Button6WidgetState extends State<Button6Widget> {
           ),
         ),
         child: Stack(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           children: [
             Opacity(
               opacity: valueOrDefault<double>(
@@ -386,7 +389,7 @@ class _Button6WidgetState extends State<Button6Widget> {
                       false,
                     ))
                       widget.iconEnd!,
-                  ].divide(SizedBox(width: 8.0)),
+                  ].divide(const SizedBox(width: 8.0)),
                 ),
               ),
             ),

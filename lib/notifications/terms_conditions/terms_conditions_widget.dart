@@ -3,8 +3,11 @@ import '/components/policy_section_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'terms_conditions_model.dart';
 export 'terms_conditions_model.dart';
 
@@ -61,8 +64,8 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        24.0, 16.0, 24.0, 16.0),
                     child: Container(
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -103,7 +106,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                                   lineHeight: 1.3,
                                 ),
                           ),
-                        ].divide(SizedBox(width: 16.0)),
+                        ].divide(const SizedBox(width: 16.0)),
                       ),
                     ),
                   ),
@@ -128,7 +131,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -137,23 +140,24 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                             children: [
                               Container(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 24.0),
                                   child: Container(
                                     child: Container(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          const AlignmentDirectional(0.0, 0.0),
                                       child: Container(
                                         width: 80.0,
                                         height: 80.0,
                                         decoration: BoxDecoration(
-                                          color: Color(0x5A5E76B8),
+                                          color: const Color(0x5A5E76B8),
                                           borderRadius:
                                               BorderRadius.circular(9999.0),
                                           shape: BoxShape.rectangle,
                                         ),
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Icon(
+                                        alignment: const AlignmentDirectional(
+                                            0.0, 0.0),
+                                        child: const Icon(
                                           Icons.description_rounded,
                                           color: Colors.white,
                                           size: 40.0,
@@ -166,7 +170,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               wrapWithModel(
                                 model: _model.policySectionModel1,
                                 updateCallback: () => safeSetState(() {}),
-                                child: PolicySectionWidget(
+                                child: const PolicySectionWidget(
                                   content:
                                       'By using El-Emshaty Pharmacy services, you agree to comply with our professional healthcare standards and local regulations regarding pharmaceutical distribution.',
                                   title: '1. General Terms',
@@ -174,7 +178,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Color(0x435E76B8),
+                                  color: const Color(0x435E76B8),
                                   borderRadius: BorderRadius.circular(16.0),
                                   shape: BoxShape.rectangle,
                                   border: Border.all(
@@ -184,7 +188,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(24.0),
+                                  padding: const EdgeInsets.all(24.0),
                                   child: Container(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -236,7 +240,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                                                     lineHeight: 1.4,
                                                   ),
                                             ),
-                                          ].divide(SizedBox(width: 8.0)),
+                                          ].divide(const SizedBox(width: 8.0)),
                                         ),
                                         Text(
                                           'For health and safety reasons, there is strictly NO exchange or refund for cosmetics, skincare, or personal care products. Any item not in its original, sealed state cannot be returned.',
@@ -270,7 +274,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                                                 lineHeight: 1.5,
                                               ),
                                         ),
-                                      ].divide(SizedBox(height: 8.0)),
+                                      ].divide(const SizedBox(height: 8.0)),
                                     ),
                                   ),
                                 ),
@@ -278,7 +282,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               wrapWithModel(
                                 model: _model.policySectionModel2,
                                 updateCallback: () => safeSetState(() {}),
-                                child: PolicySectionWidget(
+                                child: const PolicySectionWidget(
                                   content:
                                       'All products shown on our platform are subject to availability. We reserve the right to limit quantities or discontinue products without notice.',
                                   title: '2. Product Availability',
@@ -287,7 +291,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               wrapWithModel(
                                 model: _model.policySectionModel3,
                                 updateCallback: () => safeSetState(() {}),
-                                child: PolicySectionWidget(
+                                child: const PolicySectionWidget(
                                   content:
                                       'Prices for our products are subject to change. ',
                                   title: '3. Pricing',
@@ -296,7 +300,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               wrapWithModel(
                                 model: _model.policySectionModel4,
                                 updateCallback: () => safeSetState(() {}),
-                                child: PolicySectionWidget(
+                                child: const PolicySectionWidget(
                                   content:
                                       'Information provided on this app is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.',
                                   title: '4. Medical Advice',
@@ -305,7 +309,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                               Container(
                                 height: 48.0,
                               ),
-                            ].divide(SizedBox(height: 24.0)),
+                            ].divide(const SizedBox(height: 24.0)),
                           ),
                         ),
                       ),
@@ -331,12 +335,12 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(24.0),
                     child: Container(
                       child: wrapWithModel(
                         model: _model.buttonModel,
                         updateCallback: () => safeSetState(() {}),
-                        child: Button25Widget(
+                        child: const Button25Widget(
                           iconPresent: false,
                           iconEndPresent: false,
                           content: 'I Understand & Accept',
@@ -353,7 +357,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: const AlignmentDirectional(0.0, 1.0),
               child: Container(),
             ),
           ],

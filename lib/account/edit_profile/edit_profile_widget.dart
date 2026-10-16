@@ -3,9 +3,12 @@ import '/components/form_input_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -55,7 +58,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
                 child: Column(
@@ -63,7 +66,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           24.0, 16.0, 24.0, 16.0),
                       child: Container(
                         child: Row(
@@ -137,14 +140,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 32.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(
+                    24.0, 32.0, 24.0, 32.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Stack(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       children: [
                         Container(
                           width: 110.0,
@@ -158,26 +162,28 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Container(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(9999.0),
                                 child: CachedNetworkImage(
-                                  fadeInDuration: Duration(milliseconds: 0),
-                                  fadeOutDuration: Duration(milliseconds: 0),
+                                  fadeInDuration:
+                                      const Duration(milliseconds: 0),
+                                  fadeOutDuration:
+                                      const Duration(milliseconds: 0),
                                   imageUrl:
                                       'https://dimg.dreamflow.cloud/v1/image/professional%20middle%20aged%20pharmacist%20portrait',
                                   width: 100.0,
                                   height: 100.0,
                                   fit: BoxFit.cover,
-                                  alignment: Alignment(0.0, 0.0),
+                                  alignment: const Alignment(0.0, 0.0),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(1.0, 1.0),
+                          alignment: const AlignmentDirectional(1.0, 1.0),
                           child: Container(
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).vibrantColor,
@@ -190,9 +196,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                child: Icon(
+                                child: const Icon(
                                   Icons.edit_rounded,
                                   color: Colors.white,
                                   size: 18.0,
@@ -257,13 +263,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 lineHeight: 1.5,
                               ),
                         ),
-                      ].divide(SizedBox(height: 4.0)),
+                      ].divide(const SizedBox(height: 4.0)),
                     ),
-                  ].divide(SizedBox(height: 16.0)),
+                  ].divide(const SizedBox(height: 16.0)),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -280,7 +287,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -290,7 +297,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               wrapWithModel(
                                 model: _model.formInputModel1,
                                 updateCallback: () => safeSetState(() {}),
-                                child: FormInputWidget(
+                                child: const FormInputWidget(
                                   hint: 'Enter your full name',
                                   icon: 'person_outline_rounded',
                                   label: 'Full Name',
@@ -301,7 +308,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               wrapWithModel(
                                 model: _model.formInputModel2,
                                 updateCallback: () => safeSetState(() {}),
-                                child: FormInputWidget(
+                                child: const FormInputWidget(
                                   hint: 'Enter your email',
                                   icon: 'mail_outline_rounded',
                                   label: 'Email Address',
@@ -312,7 +319,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               wrapWithModel(
                                 model: _model.formInputModel3,
                                 updateCallback: () => safeSetState(() {}),
-                                child: FormInputWidget(
+                                child: const FormInputWidget(
                                   hint: '+966 5X XXX XXXX',
                                   icon: 'phone_android_rounded',
                                   label: 'Phone Number',
@@ -323,7 +330,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               wrapWithModel(
                                 model: _model.formInputModel4,
                                 updateCallback: () => safeSetState(() {}),
-                                child: FormInputWidget(
+                                child: const FormInputWidget(
                                   hint: 'Enter your city',
                                   icon: 'location_on_outlined',
                                   label: 'City / Address',
@@ -331,14 +338,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   value: 'Riyadh, KSA',
                                 ),
                               ),
-                            ].divide(SizedBox(height: 16.0)),
+                            ].divide(const SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 32.0),
                       child: Container(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -383,11 +390,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 disabled: false,
                               ),
                             ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
-                  ].divide(SizedBox(height: 24.0)),
+                  ].divide(const SizedBox(height: 24.0)),
                 ),
               ),
               Container(
@@ -407,7 +414,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(24.0),
+                      padding: const EdgeInsets.all(24.0),
                       child: Container(
                         child: wrapWithModel(
                           model: _model.buttonModel3,

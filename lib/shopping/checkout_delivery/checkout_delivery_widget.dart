@@ -1,19 +1,21 @@
-import '/components/address_card_widget.dart';
-import '/components/button11_widget.dart';
 import '/components/checkout_step_widget.dart';
-import '/components/payment_option_widget.dart';
-import '/components/summary_row2_widget.dart';
-import '/flutter_flow/ff_builtin_enums.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../backend/woocommerce/cart_models.dart';
+import '../../backend/woocommerce/checkout_models.dart';
+import '../../backend/woocommerce/woocommerce_cart_controller.dart';
 import 'checkout_delivery_model.dart';
+
 export 'checkout_delivery_model.dart';
 
 class CheckoutDeliveryWidget extends StatefulWidget {
-  const CheckoutDeliveryWidget({super.key});
+  const CheckoutDeliveryWidget({super.key, this.cartController});
+
+  /// Injectable for widget tests; normal navigation uses the shared cart.
+  final WooCommerceCartController? cartController;
 
   static String routeName = 'checkout_delivery';
   static String routePath = '/checkoutDelivery';
@@ -24,740 +26,445 @@ class CheckoutDeliveryWidget extends StatefulWidget {
 
 class _CheckoutDeliveryWidgetState extends State<CheckoutDeliveryWidget> {
   late CheckoutDeliveryModel _model;
-
+  late WooCommerceCartController _cartController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    _cartController =
+        widget.cartController ?? WooCommerceCartController.instance;
     _model = createModel(context, () => CheckoutDeliveryModel());
+    if (!_cartController.hasLoadedCart && !_cartController.isLoading) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted &&
+            !_cartController.hasLoadedCart &&
+            !_cartController.isLoading) {
+          _cartController.loadCart();
+        }
+      });
+    }
   }
 
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = FlutterFlowTheme.of(context);
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        backgroundColor: theme.primaryBackground,
+        appBar: AppBar(
+          backgroundColor: theme.secondaryBackground,
+          foregroundColor: theme.primaryText,
+          elevation: 0,
+          leading: IconButton(
+            tooltip: 'Back',
+            icon: const Icon(Icons.arrow_back_rounded),
+            onPressed: () => context.pop(),
+          ),
+          title: const Text('Checkout'),
+        ),
+        body: AnimatedBuilder(
+          animation: _cartController,
+          builder: (context, _) {
+            final cart = _cartController.cart;
+            return Column(
+              children: [
+                _buildSteps(),
+                Expanded(
+                  child: Form(
+                    key: _model.formKey,
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          _buildAddressForm(),
+                          const SizedBox(height: 20),
+                          _buildDeliveryInfo(cart),
+                          const SizedBox(height: 20),
+                          _buildPaymentMethods(),
+                          const SizedBox(height: 20),
+                          _buildCartSummary(cart),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                _buildFooter(cart),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSteps() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        child: Row(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 16.0),
-                    child: Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              Icons.arrow_back_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Text(
-                              'Checkout',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .vibrantColor,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontStyle,
-                                    lineHeight: 1.3,
-                                  ),
-                            ),
-                          ),
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              Icons.help_outline_rounded,
-                              color: FlutterFlowTheme.of(context).mutedColor,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
-                        ].divide(SizedBox(width: 16.0)),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
-                    child: Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: wrapWithModel(
-                              model: _model.checkoutStepModel1,
-                              updateCallback: () => safeSetState(() {}),
-                              child: CheckoutStepWidget(
-                                done: false,
-                                title: 'Address',
-                                active: true,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Divider(
-                              height: 16.0,
-                              thickness: 2.0,
-                              indent: 0.0,
-                              endIndent: 0.0,
-                              color: FlutterFlowTheme.of(context).alternate,
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: wrapWithModel(
-                              model: _model.checkoutStepModel2,
-                              updateCallback: () => safeSetState(() {}),
-                              child: CheckoutStepWidget(
-                                done: false,
-                                title: 'Payment',
-                                active: true,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Divider(
-                              height: 16.0,
-                              thickness: 2.0,
-                              indent: 0.0,
-                              endIndent: 0.0,
-                              color: FlutterFlowTheme.of(context).alternate,
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: wrapWithModel(
-                              model: _model.checkoutStepModel3,
-                              updateCallback: () => safeSetState(() {}),
-                              child: CheckoutStepWidget(
-                                done: false,
-                                title: 'Review',
-                                active: true,
-                              ),
-                            ),
-                          ),
-                        ].divide(SizedBox(width: 8.0)),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
+            const Expanded(
+              child: CheckoutStepWidget(
+                done: false,
+                title: 'Address',
+                active: true,
               ),
             ),
             Expanded(
-              flex: 1,
-              child: Container(
-                child: SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(24.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Delivery Address',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.buttonModel1,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: Button11Widget(
-                                          icon: Icon(
-                                            Icons.add_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
-                                          ),
-                                          iconPresent: true,
-                                          iconEndPresent: false,
-                                          content: 'Add New',
-                                          variant: 'ghost',
-                                          size: 'small',
-                                          fullWidth: false,
-                                          loading: false,
-                                          disabled: false,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.addressCardModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: AddressCardWidget(
-                                      address:
-                                          '123 El-Nil Street, Maadi, Cairo, Egypt',
-                                      label: 'home',
-                                      city: 'New Cairo, Egypt',
-                                      isDefault: true,
-                                      phone: '+20 100 123 4567',
-                                      street: '123 Medical Drive, Apartment 4B',
-                                      selected: true,
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Delivery Method',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(16.0),
-                                      shape: BoxShape.rectangle,
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 1.0,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(24.0),
-                                      child: Container(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.local_shipping_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 24.0,
-                                            ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Standard Delivery',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleSmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .interTight(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                          lineHeight: 1.4,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    'Estimated: 30-60 mins',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF0F172A),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .fontStyle,
-                                                          lineHeight: 1.4,
-                                                        ),
-                                                  ),
-                                                ].divide(SizedBox(height: 4.0)),
-                                              ),
-                                            ),
-                                            Text(
-                                              'EGP 20.00',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    font:
-                                                        GoogleFonts.interTight(
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontStyle,
-                                                    ),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .fontStyle,
-                                                    lineHeight: 1.4,
-                                                  ),
-                                            ),
-                                          ].divide(SizedBox(width: 16.0)),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Payment Method',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.paymentOptionModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PaymentOptionWidget(
-                                      icon: Icon(
-                                        Icons.payments_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 24.0,
-                                      ),
-                                      title: 'Cash on Delivery',
-                                      selected: true,
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  shape: BoxShape.rectangle,
-                                  border: Border.all(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    width: 1.0,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(24.0),
-                                  child: Container(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Order Summary',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                font: GoogleFonts.interTight(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
-                                                lineHeight: 1.4,
-                                              ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.summaryRowModel1,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: SummaryRow2Widget(
-                                            label: 'Subtotal (3 items)',
-                                            value: 'EGP 1,015.00',
-                                            bold: false,
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.summaryRowModel2,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: SummaryRow2Widget(
-                                            label: 'Delivery Fee',
-                                            value: 'EGP 20.00',
-                                            bold: false,
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.summaryRowModel3,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: SummaryRow2Widget(
-                                            label: 'Discount',
-                                            value: '- EGP 45.00',
-                                            bold: false,
-                                          ),
-                                        ),
-                                        Divider(
-                                          height: 16.0,
-                                          thickness: 1.0,
-                                          indent: 0.0,
-                                          endIndent: 0.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.summaryRowModel4,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: SummaryRow2Widget(
-                                            label: 'Total Amount',
-                                            value: 'EGP 990.00',
-                                            bold: true,
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(height: 16.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ].divide(SizedBox(height: 24.0)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: Divider(color: FlutterFlowTheme.of(context).alternate)),
+            const Expanded(
+              child: CheckoutStepWidget(
+                done: false,
+                title: 'Payment',
+                active: false,
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
+            Expanded(
+                child: Divider(color: FlutterFlowTheme.of(context).alternate)),
+            const Expanded(
+              child: CheckoutStepWidget(
+                done: false,
+                title: 'Review',
+                active: false,
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(24.0),
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment:
-                            (FFCrossAxisAlignment.start).flutterValue,
-                        textBaseline: TextBaseline.alphabetic,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total Amount',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelSmall
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall
-                                                  .fontStyle,
-                                          lineHeight: 1.2,
-                                        ),
-                                  ),
-                                  Text(
-                                    'EGP 990.00',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleLarge
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleLarge
-                                                  .fontStyle,
-                                          lineHeight: 1.3,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          wrapWithModel(
-                            model: _model.buttonModel2,
-                            updateCallback: () => safeSetState(() {}),
-                            child: Button11Widget(
-                              iconPresent: false,
-                              iconEnd: null,
-                              iconEndPresent: true,
-                              content: 'Confirm & Place Order',
-                              variant: 'primary',
-                              size: 'large',
-                              fullWidth: true,
-                              loading: false,
-                              disabled: false,
-                            ),
-                          ),
-                        ].divide(SizedBox(height: 16.0)),
-                      ),
-                    ),
-                  ),
-                ],
+            ),
+          ],
+        ),
+      );
+
+  Widget _buildAddressForm() => _section(
+        title: 'Billing information',
+        child: Column(
+          children: [
+            _field(
+              controller: _model.billingNameController,
+              label: 'Full name',
+              validator: _personName,
+              textCapitalization: TextCapitalization.words,
+            ),
+            _field(
+              controller: _model.billingEmailController,
+              label: 'Billing email',
+              validator: _email,
+              keyboardType: TextInputType.emailAddress,
+            ),
+            _field(
+              controller: _model.billingPhoneController,
+              label: 'Billing phone',
+              validator: _phone,
+              keyboardType: TextInputType.phone,
+            ),
+            _field(
+              controller: _model.billingAddressController,
+              label: 'Billing street address',
+              validator: _required,
+              textCapitalization: TextCapitalization.sentences,
+            ),
+            _field(
+              controller: _model.billingCityController,
+              label: 'Billing city',
+              validator: _required,
+              textCapitalization: TextCapitalization.words,
+            ),
+            _field(
+              controller: _model.billingCountryController,
+              label: 'Billing country code (for example, EG)',
+              validator: _countryCode,
+              textCapitalization: TextCapitalization.characters,
+            ),
+            const SizedBox(height: 12),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Delivery address',
+                style: FlutterFlowTheme.of(context).titleSmall,
               ),
+            ),
+            const SizedBox(height: 8),
+            _field(
+              controller: _model.shippingNameController,
+              label: 'Recipient full name',
+              validator: _personName,
+              textCapitalization: TextCapitalization.words,
+            ),
+            _field(
+              controller: _model.shippingAddressController,
+              label: 'Street address',
+              validator: _required,
+              textCapitalization: TextCapitalization.sentences,
+            ),
+            _field(
+              controller: _model.shippingCityController,
+              label: 'City',
+              validator: _required,
+              textCapitalization: TextCapitalization.words,
+            ),
+            _field(
+              controller: _model.shippingCountryController,
+              label: 'Country code (for example, EG)',
+              validator: _countryCode,
+              textCapitalization: TextCapitalization.characters,
+            ),
+            _field(
+              controller: _model.shippingPhoneController,
+              label: 'Delivery phone',
+              validator: _phone,
+              keyboardType: TextInputType.phone,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Enter the customer details for this delivery. No account is assumed.',
+              style: FlutterFlowTheme.of(context).bodySmall,
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton(
+              key: const Key('validate-checkout-details'),
+              onPressed: _validateDetails,
+              child: const Text('Check information'),
+            ),
+          ],
+        ),
+      );
+
+  Widget _field({
+    required TextEditingController controller,
+    required String label,
+    required String? Function(String?) validator,
+    TextInputType? keyboardType,
+    TextCapitalization textCapitalization = TextCapitalization.none,
+  }) =>
+      Padding(
+        padding: const EdgeInsets.only(bottom: 12),
+        child: TextFormField(
+          key: Key('checkout-field-$label'),
+          controller: controller,
+          keyboardType: keyboardType,
+          textCapitalization: textCapitalization,
+          validator: validator,
+          decoration: InputDecoration(
+            labelText: label,
+            border: const OutlineInputBorder(),
+          ),
+        ),
+      );
+
+  Widget _buildDeliveryInfo(WooCart? cart) => _section(
+        title: 'Delivery method',
+        child: Row(
+          children: [
+            Icon(Icons.local_shipping_rounded,
+                color: FlutterFlowTheme.of(context).primary),
+            const SizedBox(width: 12),
+            const Expanded(child: Text('Shipping')),
+            Text(_money(cart?.totals.totalShipping, cart?.totals)),
+          ],
+        ),
+      );
+
+  Widget _buildPaymentMethods() => _section(
+        title: 'Payment method',
+        child: Text(
+          'Payment options are not provided by the current checkout response. No method has been selected.',
+          key: const Key('checkout-payment-methods-unavailable'),
+          style: FlutterFlowTheme.of(context).bodyMedium,
+        ),
+      );
+
+  Widget _buildCartSummary(WooCart? cart) {
+    if (_cartController.isLoading && cart == null) {
+      return _section(
+        title: 'Order summary',
+        child: const Center(child: CircularProgressIndicator()),
+      );
+    }
+    if (_cartController.errorMessage != null && cart == null) {
+      return _section(
+        title: 'Order summary',
+        child: Text(
+          'Could not load your cart: ${_cartController.errorMessage}',
+          key: const Key('checkout-cart-error'),
+          style: TextStyle(color: FlutterFlowTheme.of(context).error),
+        ),
+      );
+    }
+    if (cart == null || cart.items.isEmpty) {
+      return _section(
+        title: 'Order summary',
+        child: const Text(
+          'Your cart is empty.',
+          key: Key('checkout-empty-cart'),
+        ),
+      );
+    }
+    final totals = cart.totals;
+    return _section(
+      title: 'Order summary',
+      child: Column(
+        children: [
+          _summaryRow(
+              'Items (${cart.itemsCount})', _money(totals.totalItems, totals)),
+          _summaryRow('Shipping', _money(totals.totalShipping, totals)),
+          _summaryRow(
+            'Discount',
+            totals.totalDiscount == null
+                ? 'Unavailable'
+                : '- ${_money(totals.totalDiscount!.abs(), totals)}',
+          ),
+          const Divider(height: 24),
+          _summaryRow('Total amount', _money(totals.totalPrice, totals),
+              bold: true),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFooter(WooCart? cart) {
+    final total =
+        cart == null ? '—' : _money(cart.totals.totalPrice, cart.totals);
+    return Material(
+      color: FlutterFlowTheme.of(context).secondaryBackground,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text('Total amount: $total',
+                key: const Key('checkout-footer-total')),
+            const SizedBox(height: 8),
+            FilledButton(
+              key: const Key('place-order-disabled'),
+              onPressed: null,
+              child: const Text('Confirm & Place Order'),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Order placement is disabled in this phase.',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).bodySmall,
             ),
           ],
         ),
       ),
     );
+  }
+
+  Widget _section({required String title, required Widget child}) => Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).secondaryBackground,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: FlutterFlowTheme.of(context).alternate),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(title, style: FlutterFlowTheme.of(context).titleMedium),
+            const SizedBox(height: 14),
+            child,
+          ],
+        ),
+      );
+
+  Widget _summaryRow(String label, String value, {bool bold = false}) =>
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(label,
+                style: bold
+                    ? FlutterFlowTheme.of(context).titleSmall
+                    : FlutterFlowTheme.of(context).bodyMedium),
+            Text(value,
+                key: Key('checkout-total-$label'),
+                style: bold
+                    ? FlutterFlowTheme.of(context).titleSmall
+                    : FlutterFlowTheme.of(context).bodyMedium),
+          ],
+        ),
+      );
+
+  void _validateDetails() {
+    final valid = _model.formKey.currentState?.validate() ?? false;
+    if (valid) {
+      final billingName = _nameParts(_model.billingNameController.text);
+      final shippingName = _nameParts(_model.shippingNameController.text);
+      _model.billingAddress = WooCheckoutAddress(
+        firstName: billingName.$1,
+        lastName: billingName.$2,
+        address1: _model.billingAddressController.text.trim(),
+        city: _model.billingCityController.text.trim(),
+        country: _model.billingCountryController.text.trim().toUpperCase(),
+        email: _model.billingEmailController.text.trim(),
+        phone: _model.billingPhoneController.text.trim(),
+      );
+      _model.shippingAddress = WooCheckoutAddress(
+        firstName: shippingName.$1,
+        lastName: shippingName.$2,
+        address1: _model.shippingAddressController.text.trim(),
+        city: _model.shippingCityController.text.trim(),
+        country: _model.shippingCountryController.text.trim().toUpperCase(),
+        phone: _model.shippingPhoneController.text.trim(),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Information is complete. Order placement remains disabled.',
+          ),
+        ),
+      );
+    }
+  }
+
+  String? _required(String? value) =>
+      value == null || value.trim().isEmpty ? 'Required' : null;
+
+  String? _personName(String? value) {
+    if (_required(value) != null) return 'Required';
+    return _nameParts(value!).$2.isEmpty ? 'Enter first and last name' : null;
+  }
+
+  String? _phone(String? value) {
+    if (_required(value) != null) return 'Required';
+    final digits = value!.replaceAll(RegExp(r'\D'), '');
+    return digits.length >= 7 ? null : 'Enter a valid phone number';
+  }
+
+  String? _countryCode(String? value) {
+    if (_required(value) != null) return 'Required';
+    return RegExp(r'^[A-Za-z]{2}$').hasMatch(value!.trim())
+        ? null
+        : 'Enter a 2-letter country code';
+  }
+
+  String? _email(String? value) {
+    if (value == null || value.trim().isEmpty) return 'Required';
+    return RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$').hasMatch(value.trim())
+        ? null
+        : 'Enter a valid email';
+  }
+
+  (String, String) _nameParts(String value) {
+    final parts = value.trim().split(RegExp(r'\s+'));
+    if (parts.length < 2) return (parts.first, '');
+    return (parts.first, parts.skip(1).join(' '));
+  }
+
+  String _money(num? amount, WooCartTotals? totals) {
+    if (amount == null || totals == null) return 'Unavailable';
+    final currency = totals.currencySymbol.isNotEmpty
+        ? totals.currencySymbol
+        : totals.currencyCode;
+    if (currency.isEmpty) return 'Unavailable';
+    final decimals = totals.currencyMinorUnit.clamp(0, 6).toInt();
+    return '$currency ${amount.toStringAsFixed(decimals)}';
   }
 }

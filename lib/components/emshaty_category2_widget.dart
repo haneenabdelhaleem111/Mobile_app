@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'emshaty_category2_model.dart';
 export 'emshaty_category2_model.dart';
 
@@ -11,8 +14,8 @@ class EmshatyCategory2Widget extends StatefulWidget {
     this.icon,
     Color? tint,
     String? title,
-  })  : this.tint = tint ?? const Color(0x00000000),
-        this.title = title ?? 'Medicines';
+  })  : tint = tint ?? const Color(0x00000000),
+        title = title ?? 'Medicines';
 
   final Widget? icon;
   final Color tint;
@@ -46,7 +49,7 @@ class _EmshatyCategory2WidgetState extends State<EmshatyCategory2Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 80.0,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -88,7 +91,7 @@ class _EmshatyCategory2WidgetState extends State<EmshatyCategory2Widget> {
                   lineHeight: 1.3,
                 ),
           ),
-        ].divide(SizedBox(height: 8.0)),
+        ].divide(const SizedBox(height: 8.0)),
       ),
     );
   }

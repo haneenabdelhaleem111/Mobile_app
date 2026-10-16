@@ -3,10 +3,13 @@ import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'my_profile2_model.dart';
 export 'my_profile2_model.dart';
 
@@ -56,7 +59,7 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
                 child: Column(
@@ -64,7 +67,7 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           24.0, 16.0, 24.0, 16.0),
                       child: Container(
                         child: Row(
@@ -138,14 +141,15 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 32.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(
+                    24.0, 32.0, 24.0, 32.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Stack(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       children: [
                         Container(
                           width: 110.0,
@@ -154,31 +158,33 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                             borderRadius: BorderRadius.circular(9999.0),
                             shape: BoxShape.rectangle,
                             border: Border.all(
-                              color: Color(0x1A0056B3),
+                              color: const Color(0x1A0056B3),
                               width: 3.0,
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Container(
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50.0),
                                 child: CachedNetworkImage(
-                                  fadeInDuration: Duration(milliseconds: 0),
-                                  fadeOutDuration: Duration(milliseconds: 0),
+                                  fadeInDuration:
+                                      const Duration(milliseconds: 0),
+                                  fadeOutDuration:
+                                      const Duration(milliseconds: 0),
                                   imageUrl:
                                       'https://dimg.dreamflow.cloud/v1/image/portrait%20of%20a%20middle%20aged%20man%20with%20a%20friendly%20smile',
                                   width: 100.0,
                                   height: 100.0,
                                   fit: BoxFit.cover,
-                                  alignment: Alignment(0.0, 0.0),
+                                  alignment: const Alignment(0.0, 0.0),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(1.0, 1.0),
+                          alignment: const AlignmentDirectional(1.0, 1.0),
                           child: Container(
                             width: 32.0,
                             height: 32.0,
@@ -192,7 +198,7 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                 width: 2.0,
                               ),
                             ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Icon(
                               Icons.edit_rounded,
                               color: FlutterFlowTheme.of(context).secondary,
@@ -256,13 +262,14 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                 lineHeight: 1.5,
                               ),
                         ),
-                      ].divide(SizedBox(height: 4.0)),
+                      ].divide(const SizedBox(height: 4.0)),
                     ),
-                  ].divide(SizedBox(height: 16.0)),
+                  ].divide(const SizedBox(height: 16.0)),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 24.0),
                 child: Container(
                   child: Container(
                     decoration: BoxDecoration(
@@ -275,9 +282,9 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(24.0),
+                      padding: const EdgeInsets.all(24.0),
                       child: Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -297,7 +304,8 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(0.0, 0.0),
                                   child: Icon(
                                     Icons.person_outline_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -367,10 +375,10 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                               lineHeight: 1.5,
                                             ),
                                       ),
-                                    ].divide(SizedBox(height: 4.0)),
+                                    ].divide(const SizedBox(height: 4.0)),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 16.0)),
+                              ].divide(const SizedBox(width: 16.0)),
                             ),
                             Divider(
                               height: 16.0,
@@ -393,7 +401,8 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(0.0, 0.0),
                                   child: Icon(
                                     Icons.mail_outlined,
                                     color: FlutterFlowTheme.of(context)
@@ -463,10 +472,10 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                               lineHeight: 1.5,
                                             ),
                                       ),
-                                    ].divide(SizedBox(height: 4.0)),
+                                    ].divide(const SizedBox(height: 4.0)),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 16.0)),
+                              ].divide(const SizedBox(width: 16.0)),
                             ),
                             Divider(
                               height: 16.0,
@@ -489,7 +498,8 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(0.0, 0.0),
                                   child: Icon(
                                     Icons.phone_iphone_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -559,10 +569,10 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                               lineHeight: 1.5,
                                             ),
                                       ),
-                                    ].divide(SizedBox(height: 4.0)),
+                                    ].divide(const SizedBox(height: 4.0)),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 16.0)),
+                              ].divide(const SizedBox(width: 16.0)),
                             ),
                             Divider(
                               height: 16.0,
@@ -585,7 +595,8 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment:
+                                      const AlignmentDirectional(0.0, 0.0),
                                   child: Icon(
                                     Icons.location_on_outlined,
                                     color: FlutterFlowTheme.of(context)
@@ -657,12 +668,12 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                                             ),
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                    ].divide(SizedBox(height: 4.0)),
+                                    ].divide(const SizedBox(height: 4.0)),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 16.0)),
+                              ].divide(const SizedBox(width: 16.0)),
                             ),
-                          ].divide(SizedBox(height: 24.0)),
+                          ].divide(const SizedBox(height: 24.0)),
                         ),
                       ),
                     ),
@@ -675,7 +686,7 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                   shape: BoxShape.rectangle,
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: (FFMainAxisAlignment.start).flutterValue,
@@ -684,10 +695,10 @@ class _MyProfile2WidgetState extends State<MyProfile2Widget> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(),
+                          decoration: const BoxDecoration(
+                            borderRadius: const BorderRadius.only(),
                           ),
                           child: InkWell(
                             splashColor: Colors.transparent,

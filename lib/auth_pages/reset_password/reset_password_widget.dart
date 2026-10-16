@@ -5,9 +5,12 @@ import '/components/text_field4_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'reset_password_model.dart';
 export 'reset_password_model.dart';
 
@@ -58,8 +61,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
             children: [
               Container(
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      24.0, 16.0, 24.0, 16.0),
                   child: Container(
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -69,7 +72,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                         FlutterFlowIconButton(
                           borderRadius: 12.0,
                           buttonSize: 40.0,
-                          fillColor: Color(0x1A0056B3),
+                          fillColor: const Color(0x1A0056B3),
                           icon: Icon(
                             Icons.arrow_back_rounded,
                             color: FlutterFlowTheme.of(context).primary,
@@ -85,7 +88,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(24.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -94,7 +97,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                     wrapWithModel(
                       model: _model.authHeaderModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: AuthHeaderWidget(
+                      child: const AuthHeaderWidget(
                         subtitle:
                             'No worries! Enter your email address below and we\'ll send you a link to reset your password.',
                         title: 'Forgot Password?',
@@ -131,7 +134,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                         wrapWithModel(
                           model: _model.buttonAuthModel,
                           updateCallback: () => safeSetState(() {}),
-                          child: ButtonAuthWidget(
+                          child: const ButtonAuthWidget(
                             iconPresent: false,
                             iconEndPresent: false,
                             content: 'Send Reset Link',
@@ -147,10 +150,11 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                           children: [
                             Container(
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Container(
                                   child: Container(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment:
+                                        const AlignmentDirectional(0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
@@ -203,7 +207,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                                             model: _model.buttonModel,
                                             updateCallback: () =>
                                                 safeSetState(() {}),
-                                            child: Button14Widget(
+                                            child: const Button14Widget(
                                               iconPresent: false,
                                               iconEndPresent: false,
                                               content: 'Login',
@@ -215,18 +219,18 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 4.0)),
+                                      ].divide(const SizedBox(width: 4.0)),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ].divide(SizedBox(height: 16.0)),
+                          ].divide(const SizedBox(height: 16.0)),
                         ),
-                      ].divide(SizedBox(height: 24.0)),
+                      ].divide(const SizedBox(height: 24.0)),
                     ),
-                    Spacer(),
-                  ].divide(SizedBox(height: 48.0)),
+                    const Spacer(),
+                  ].divide(const SizedBox(height: 48.0)),
                 ),
               ),
             ],

@@ -1,9 +1,12 @@
 import '/components/button10_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_palette/material_palette.dart';
+import 'package:provider/provider.dart';
 import 'offer_banner9_model.dart';
 export 'offer_banner9_model.dart';
 
@@ -13,9 +16,9 @@ class OfferBanner9Widget extends StatefulWidget {
     String? btnText,
     String? subtitle,
     String? title,
-  })  : this.btnText = btnText ?? 'Shop Now',
-        this.subtitle = subtitle ?? 'Boost your immunity today',
-        this.title = title ?? '20% OFF Vitamins';
+  })  : btnText = btnText ?? 'Shop Now',
+        subtitle = subtitle ?? 'Boost your immunity today',
+        title = title ?? '20% OFF Vitamins';
 
   final String btnText;
   final String subtitle;
@@ -49,10 +52,10 @@ class _OfferBanner9WidgetState extends State<OfferBanner9Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 160.0,
       child: Stack(
-        alignment: AlignmentDirectional(-1.0, -1.0),
+        alignment: const AlignmentDirectional(-1.0, -1.0),
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(24.0),
@@ -101,14 +104,14 @@ class _OfferBanner9WidgetState extends State<OfferBanner9Widget> {
                     }, colors: {
                       'color0': FlutterFlowTheme.of(context).primary,
                       'color1': FlutterFlowTheme.of(context).secondary,
-                      'color2': Color(0x00808080),
-                      'color3': Color(0x00808080),
-                      'color4': Color(0x00808080),
-                      'color5': Color(0x00808080),
-                      'color6': Color(0x00808080),
-                      'color7': Color(0x00808080),
-                      'color8': Color(0x00808080),
-                      'color9': Color(0x00808080)
+                      'color2': const Color(0x00808080),
+                      'color3': const Color(0x00808080),
+                      'color4': const Color(0x00808080),
+                      'color5': const Color(0x00808080),
+                      'color6': const Color(0x00808080),
+                      'color7': const Color(0x00808080),
+                      'color8': const Color(0x00808080),
+                      'color9': const Color(0x00808080)
                     }),
                     animationMode: ShaderAnimationMode.continuous,
                     cache: false,
@@ -119,7 +122,7 @@ class _OfferBanner9WidgetState extends State<OfferBanner9Widget> {
           ),
           Container(
             child: Padding(
-              padding: EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(32.0),
               child: Container(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -166,7 +169,7 @@ class _OfferBanner9WidgetState extends State<OfferBanner9Widget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            color: Color(0xE6FFFFFF),
+                            color: const Color(0xE6FFFFFF),
                             letterSpacing: 0.0,
                             fontWeight: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -194,7 +197,7 @@ class _OfferBanner9WidgetState extends State<OfferBanner9Widget> {
                         disabled: false,
                       ),
                     ),
-                  ].divide(SizedBox(height: 8.0)),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
               ),
             ),

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'text_field5_model.dart';
 export 'text_field5_model.dart';
 
@@ -22,18 +25,18 @@ class TextField5Widget extends StatefulWidget {
     String? onSubmit,
     String? variant,
     bool? error,
-  })  : this.label = label ?? '',
-        this.labelPresent = labelPresent ?? false,
-        this.helper = helper ?? '',
-        this.helperPresent = helperPresent ?? false,
-        this.leadingIconPresent = leadingIconPresent ?? false,
-        this.trailingIconPresent = trailingIconPresent ?? false,
-        this.hint = hint ?? 'SlotValue(\$hint)',
-        this.value = value ?? 'SlotValue(\$value)',
-        this.onChange = onChange ?? '',
-        this.onSubmit = onSubmit ?? '',
-        this.variant = variant ?? 'filled',
-        this.error = error ?? false;
+  })  : label = label ?? '',
+        labelPresent = labelPresent ?? false,
+        helper = helper ?? '',
+        helperPresent = helperPresent ?? false,
+        leadingIconPresent = leadingIconPresent ?? false,
+        trailingIconPresent = trailingIconPresent ?? false,
+        hint = hint ?? 'SlotValue(\$hint)',
+        value = value ?? 'SlotValue(\$value)',
+        onChange = onChange ?? '',
+        onSubmit = onSubmit ?? '',
+        variant = variant ?? 'filled',
+        error = error ?? false;
 
   final String label;
   final bool labelPresent;
@@ -512,7 +515,7 @@ class _TextField5WidgetState extends State<TextField5Widget> {
                     lineHeight: 1.4,
                   ),
             ),
-        ].divide(SizedBox(height: 6.0)),
+        ].divide(const SizedBox(height: 6.0)),
       ),
     );
   }

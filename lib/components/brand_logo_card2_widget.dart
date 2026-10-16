@@ -1,8 +1,12 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'brand_logo_card2_model.dart';
 export 'brand_logo_card2_model.dart';
 
@@ -11,8 +15,8 @@ class BrandLogoCard2Widget extends StatefulWidget {
     super.key,
     String? name,
     String? slug,
-  })  : this.name = name ?? 'La Roche-Posay',
-        this.slug = slug ?? 'https://cdn.simpleicons.org/vichy/0056b3.svg';
+  })  : name = name ?? 'La Roche-Posay',
+        slug = slug ?? 'https://cdn.simpleicons.org/vichy/0056b3.svg';
 
   final String name;
   final String slug;
@@ -57,7 +61,7 @@ class _BrandLogoCard2WidgetState extends State<BrandLogoCard2Widget> {
           width: 1.0,
         ),
       ),
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +96,7 @@ class _BrandLogoCard2WidgetState extends State<BrandLogoCard2Widget> {
                   lineHeight: 1.2,
                 ),
           ),
-        ].divide(SizedBox(height: 4.0)),
+        ].divide(const SizedBox(height: 4.0)),
       ),
     );
   }

@@ -4,9 +4,12 @@ import '/components/emshaty_search_bar3_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'brands_model.dart';
 export 'brands_model.dart';
 
@@ -63,8 +66,8 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 8.0),
                     child: Container(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -124,12 +127,12 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                           lineHeight: 1.3,
                                         ),
                                   ),
-                                ].divide(SizedBox(width: 16.0)),
+                                ].divide(const SizedBox(width: 16.0)),
                               ),
                               FlutterFlowIconButton(
                                 borderRadius: 16.0,
                                 buttonSize: 40.0,
-                                fillColor: Color(0x1A0056B3),
+                                fillColor: const Color(0x1A0056B3),
                                 icon: Icon(
                                   Icons.shopping_basket_rounded,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -144,9 +147,9 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                           wrapWithModel(
                             model: _model.emshatySearchBarModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: EmshatySearchBar3Widget(),
+                            child: const EmshatySearchBar3Widget(),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
@@ -171,7 +174,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -188,19 +191,20 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Stack(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    alignment:
+                                        const AlignmentDirectional(-1.0, -1.0),
                                     children: [
                                       Opacity(
                                         opacity: 0.4,
                                         child: CachedNetworkImage(
                                           fadeInDuration:
-                                              Duration(milliseconds: 0),
+                                              const Duration(milliseconds: 0),
                                           fadeOutDuration:
-                                              Duration(milliseconds: 0),
+                                              const Duration(milliseconds: 0),
                                           imageUrl:
                                               'https://dimg.dreamflow.cloud/v1/image/luxury%20skincare%20brand%20aesthetic%20background',
                                           fit: BoxFit.cover,
-                                          alignment: Alignment(0.0, 0.0),
+                                          alignment: const Alignment(0.0, 0.0),
                                         ),
                                       ),
                                       Container(
@@ -211,15 +215,16 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                                   .primary,
                                               Colors.transparent
                                             ],
-                                            stops: [0.0, 1.0],
-                                            begin:
-                                                AlignmentDirectional(-1.0, 0.0),
-                                            end: AlignmentDirectional(1.0, 0),
+                                            stops: const [0.0, 1.0],
+                                            begin: const AlignmentDirectional(
+                                                -1.0, 0.0),
+                                            end: const AlignmentDirectional(
+                                                1.0, 0),
                                           ),
                                           shape: BoxShape.rectangle,
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(24.0),
+                                          padding: const EdgeInsets.all(24.0),
                                           child: Container(
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
@@ -237,9 +242,9 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 4.0,
-                                                                8.0, 4.0),
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            8.0, 4.0, 8.0, 4.0),
                                                     child: Container(
                                                       child: Text(
                                                         'BRAND OF THE MONTH',
@@ -331,8 +336,8 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                                                   .bodySmall
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            Color(0xE6FFFFFF),
+                                                        color: const Color(
+                                                            0xE6FFFFFF),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -351,7 +356,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                                   model: _model.buttonModel,
                                                   updateCallback: () =>
                                                       safeSetState(() {}),
-                                                  child: Button26Widget(
+                                                  child: const Button26Widget(
                                                     iconPresent: false,
                                                     iconEndPresent: false,
                                                     content:
@@ -363,7 +368,8 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                                     disabled: false,
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(height: 8.0)),
+                                              ].divide(
+                                                  const SizedBox(height: 8.0)),
                                             ),
                                           ),
                                         ),
@@ -449,7 +455,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                   GridView(
                                     padding: EdgeInsets.zero,
                                     gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 3,
                                       crossAxisSpacing: 16.0,
                                       mainAxisSpacing: 0.0,
@@ -463,7 +469,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel1,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'La Roche-Posay',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -473,7 +479,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel2,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Vichy',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -483,7 +489,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel3,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Bioderma',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -493,7 +499,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel4,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Centrum',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -503,7 +509,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel5,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Panadol',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -513,7 +519,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel6,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Eucerin',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -523,7 +529,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel7,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Avene',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -533,7 +539,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel8,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'CeraVe',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -543,7 +549,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel9,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Mustela',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -553,7 +559,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel10,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Dettol',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -563,7 +569,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel11,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Garnier',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -573,7 +579,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                         model: _model.brandLogoCardModel12,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: BrandLogoCard2Widget(
+                                        child: const BrandLogoCard2Widget(
                                           name: 'Nivea',
                                           slug:
                                               'https://cdn.simpleicons.org/vichy/0056b3.svg',
@@ -581,9 +587,9 @@ class _BrandsWidgetState extends State<BrandsWidget> {
                                       ),
                                     ],
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
-                            ].divide(SizedBox(height: 24.0)),
+                            ].divide(const SizedBox(height: 24.0)),
                           ),
                         ),
                       ),

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'success_header_model.dart';
 export 'success_header_model.dart';
 
@@ -45,11 +48,11 @@ class _SuccessHeaderWidgetState extends State<SuccessHeaderWidget> {
           width: 100.0,
           height: 100.0,
           decoration: BoxDecoration(
-            color: Color(0x1A10B981),
+            color: const Color(0x1A10B981),
             borderRadius: BorderRadius.circular(9999.0),
             shape: BoxShape.rectangle,
           ),
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: 72.0,
             height: 72.0,
@@ -58,8 +61,8 @@ class _SuccessHeaderWidgetState extends State<SuccessHeaderWidget> {
               borderRadius: BorderRadius.circular(9999.0),
               shape: BoxShape.rectangle,
             ),
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Icon(
+            alignment: const AlignmentDirectional(0.0, 0.0),
+            child: const Icon(
               Icons.check_rounded,
               color: Colors.white,
               size: 40.0,
@@ -109,9 +112,9 @@ class _SuccessHeaderWidgetState extends State<SuccessHeaderWidget> {
                     lineHeight: 1.5,
                   ),
             ),
-          ].divide(SizedBox(height: 8.0)),
+          ].divide(const SizedBox(height: 8.0)),
         ),
-      ].divide(SizedBox(height: 24.0)),
+      ].divide(const SizedBox(height: 24.0)),
     );
   }
 }

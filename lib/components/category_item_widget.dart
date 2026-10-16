@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'category_item_model.dart';
 export 'category_item_model.dart';
 
@@ -12,9 +15,9 @@ class CategoryItemWidget extends StatefulWidget {
     this.icon,
     String? title,
     Color? tint,
-  })  : this.count = count ?? '1,240 Products',
-        this.title = title ?? 'Prescription Drugs',
-        this.tint = tint ?? const Color(0x00000000);
+  })  : count = count ?? '1,240 Products',
+        title = title ?? 'Prescription Drugs',
+        tint = tint ?? const Color(0x00000000);
 
   final String count;
   final Widget? icon;
@@ -60,7 +63,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -132,7 +135,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                             lineHeight: 1.2,
                           ),
                     ),
-                  ].divide(SizedBox(height: 4.0)),
+                  ].divide(const SizedBox(height: 4.0)),
                 ),
               ),
               Icon(
@@ -140,7 +143,7 @@ class _CategoryItemWidgetState extends State<CategoryItemWidget> {
                 color: FlutterFlowTheme.of(context).accent3,
                 size: 20.0,
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ].divide(const SizedBox(width: 16.0)),
           ),
         ),
       ),

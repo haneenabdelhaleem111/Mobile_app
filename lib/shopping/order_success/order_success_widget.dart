@@ -6,9 +6,13 @@ import '/components/summary_item_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'order_success_model.dart';
 export 'order_success_model.dart';
 
@@ -58,7 +62,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(24.0),
                 child: Container(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -94,7 +98,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                       wrapWithModel(
                         model: _model.successHeaderModel,
                         updateCallback: () => safeSetState(() {}),
-                        child: SuccessHeaderWidget(),
+                        child: const SuccessHeaderWidget(),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -108,7 +112,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(24.0),
+                          padding: const EdgeInsets.all(24.0),
                           child: Container(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -124,15 +128,16 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                       width: 40.0,
                                       height: 40.0,
                                       decoration: BoxDecoration(
-                                        color: Color(0x1A0056B3),
+                                        color: const Color(0x1A0056B3),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Icon(
+                                      alignment:
+                                          const AlignmentDirectional(0.0, 0.0),
+                                      child: const Icon(
                                         Icons.local_shipping_rounded,
-                                        color: Color(0xFF0F172A),
+                                        color: const Color(0xFF0F172A),
                                         size: 20.0,
                                       ),
                                     ),
@@ -216,7 +221,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                         ],
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 16.0)),
+                                  ].divide(const SizedBox(width: 16.0)),
                                 ),
                                 Divider(
                                   height: 16.0,
@@ -234,15 +239,16 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                       width: 40.0,
                                       height: 40.0,
                                       decoration: BoxDecoration(
-                                        color: Color(0x1A00A8E8),
+                                        color: const Color(0x1A00A8E8),
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Icon(
+                                      alignment:
+                                          const AlignmentDirectional(0.0, 0.0),
+                                      child: const Icon(
                                         Icons.location_on_rounded,
-                                        color: Color(0xFF0F172A),
+                                        color: const Color(0xFF0F172A),
                                         size: 20.0,
                                       ),
                                     ),
@@ -327,9 +333,9 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                         ],
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 16.0)),
+                                  ].divide(const SizedBox(width: 16.0)),
                                 ),
-                              ].divide(SizedBox(height: 16.0)),
+                              ].divide(const SizedBox(height: 16.0)),
                             ),
                           ),
                         ),
@@ -376,7 +382,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(24.0),
+                              padding: const EdgeInsets.all(24.0),
                               child: Container(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -386,7 +392,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                     wrapWithModel(
                                       model: _model.productMiniCardModel1,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: ProductMiniCardWidget(
+                                      child: const ProductMiniCardWidget(
                                         img:
                                             'https://dimg.dreamflow.cloud/v1/image/medicine%20box%20antibiotics',
                                         name: 'Amoxicillin 500mg',
@@ -397,7 +403,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                     wrapWithModel(
                                       model: _model.productMiniCardModel2,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: ProductMiniCardWidget(
+                                      child: const ProductMiniCardWidget(
                                         img:
                                             'https://dimg.dreamflow.cloud/v1/image/vitamin%20c%20tube',
                                         name: 'Vitamin C 1000mg',
@@ -416,7 +422,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                     wrapWithModel(
                                       model: _model.summaryItemModel1,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: SummaryItemWidget(
+                                      child: const SummaryItemWidget(
                                         label: 'Subtotal',
                                         value: 'EGP 235.00',
                                       ),
@@ -424,7 +430,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                     wrapWithModel(
                                       model: _model.summaryItemModel2,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: SummaryItemWidget(
+                                      child: const SummaryItemWidget(
                                         label: 'Delivery Fee',
                                         value: 'EGP 25.00',
                                       ),
@@ -432,7 +438,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                     wrapWithModel(
                                       model: _model.summaryItemModel3,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: SummaryItemWidget(
+                                      child: const SummaryItemWidget(
                                         label: 'Discount',
                                         value: '- EGP 20.00',
                                       ),
@@ -504,12 +510,12 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                         ),
                                       ],
                                     ),
-                                  ].divide(SizedBox(height: 16.0)),
+                                  ].divide(const SizedBox(height: 16.0)),
                                 ),
                               ),
                             ),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
@@ -519,7 +525,7 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                           wrapWithModel(
                             model: _model.primaryButtonModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: PrimaryButton3Widget(
+                            child: const PrimaryButton3Widget(
                               icon: null,
                               label: 'Track Order',
                             ),
@@ -527,20 +533,20 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                           wrapWithModel(
                             model: _model.secondaryButtonModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: SecondaryButtonWidget(
+                            child: const SecondaryButtonWidget(
                               label: 'Back to Shopping',
                               icon: 'shopping_bag_outlined',
                             ),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                       Container(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 16.0),
                           child: Container(
                             child: Container(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -598,13 +604,13 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget> {
                                           lineHeight: 1.4,
                                         ),
                                   ),
-                                ].divide(SizedBox(width: 4.0)),
+                                ].divide(const SizedBox(width: 4.0)),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 32.0)),
+                    ].divide(const SizedBox(height: 32.0)),
                   ),
                 ),
               ),

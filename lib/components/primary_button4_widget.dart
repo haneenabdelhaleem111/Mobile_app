@@ -1,6 +1,10 @@
 import '/components/button22_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'primary_button4_model.dart';
 export 'primary_button4_model.dart';
 
@@ -10,8 +14,8 @@ class PrimaryButton4Widget extends StatefulWidget {
     String? content,
     this.icon,
     bool? loading,
-  })  : this.content = content ?? 'Add to Cart',
-        this.loading = loading ?? false;
+  })  : content = content ?? 'Add to Cart',
+        loading = loading ?? false;
 
   final String content;
   final Widget? icon;

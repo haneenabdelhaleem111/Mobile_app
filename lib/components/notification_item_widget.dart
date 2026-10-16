@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'notification_item_model.dart';
 export 'notification_item_model.dart';
 
@@ -14,12 +17,12 @@ class NotificationItemWidget extends StatefulWidget {
     String? time,
     String? title,
     bool? isUnread,
-  })  : this.category = category ?? 'Orders',
-        this.message = message ??
+  })  : category = category ?? 'Orders',
+        message = message ??
             'Your prescription for Amoxicillin has been delivered to your doorstep.',
-        this.time = time ?? '2m ago',
-        this.title = title ?? 'Order #8821 Delivered',
-        this.isUnread = isUnread ?? true;
+        time = time ?? '2m ago',
+        title = title ?? 'Order #8821 Delivered',
+        isUnread = isUnread ?? true;
 
   final String category;
   final Widget? icon;
@@ -57,7 +60,7 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
       child: Container(
         child: Container(
           decoration: BoxDecoration(
@@ -70,9 +73,9 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
                   widget.isUnread,
                   true,
                 )
-                    ? Color(0x1A0056B3)
+                    ? const Color(0x1A0056B3)
                     : FlutterFlowTheme.of(context).alternate,
-                Color(0x1A0056B3),
+                const Color(0x1A0056B3),
               ),
               width: valueOrDefault<double>(
                 valueOrDefault<bool>(
@@ -86,7 +89,7 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -102,14 +105,14 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
                           widget.isUnread,
                           true,
                         )
-                            ? Color(0x1A0056B3)
-                            : Color(0xFFF1F5F9),
-                        Color(0x1A0056B3),
+                            ? const Color(0x1A0056B3)
+                            : const Color(0xFFF1F5F9),
+                        const Color(0x1A0056B3),
                       ),
                       borderRadius: BorderRadius.circular(12.0),
                       shape: BoxShape.rectangle,
                     ),
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: widget.icon!,
                   ),
                   Expanded(
@@ -245,7 +248,7 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
                               ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                      ].divide(SizedBox(height: 4.0)),
+                      ].divide(const SizedBox(height: 4.0)),
                     ),
                   ),
                   if (valueOrDefault<bool>(
@@ -253,8 +256,8 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
                     true,
                   ))
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 4.0, 0.0, 0.0),
                       child: Container(
                         child: Container(
                           width: 8.0,
@@ -267,7 +270,7 @@ class _NotificationItemWidgetState extends State<NotificationItemWidget> {
                         ),
                       ),
                     ),
-                ].divide(SizedBox(width: 16.0)),
+                ].divide(const SizedBox(width: 16.0)),
               ),
             ),
           ),

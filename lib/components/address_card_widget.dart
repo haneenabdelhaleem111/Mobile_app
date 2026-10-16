@@ -1,8 +1,11 @@
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'address_card_model.dart';
 export 'address_card_model.dart';
 
@@ -16,13 +19,13 @@ class AddressCardWidget extends StatefulWidget {
     String? phone,
     String? street,
     bool? selected,
-  })  : this.address = address ?? '123 El-Nil Street, Maadi, Cairo, Egypt',
-        this.label = label ?? 'home',
-        this.city = city ?? 'New Cairo, Egypt',
-        this.isDefault = isDefault ?? true,
-        this.phone = phone ?? '+20 100 123 4567',
-        this.street = street ?? '123 Medical Drive, Apartment 4B',
-        this.selected = selected ?? true;
+  })  : address = address ?? '123 El-Nil Street, Maadi, Cairo, Egypt',
+        label = label ?? 'home',
+        city = city ?? 'New Cairo, Egypt',
+        isDefault = isDefault ?? true,
+        phone = phone ?? '+20 100 123 4567',
+        street = street ?? '123 Medical Drive, Apartment 4B',
+        selected = selected ?? true;
 
   final String address;
   final String label;
@@ -61,7 +64,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
       child: Container(
         child: Container(
           decoration: BoxDecoration(
@@ -90,7 +93,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(24.0),
             child: Container(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -116,20 +119,20 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                                   widget.selected,
                                   true,
                                 )
-                                    ? Color(0x1A0056B3)
+                                    ? const Color(0x1A0056B3)
                                     : FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                Color(0x1A0056B3),
+                                const Color(0x1A0056B3),
                               ),
                               borderRadius: BorderRadius.circular(12.0),
                               shape: BoxShape.rectangle,
                             ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Container(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: SizedBox(
                               width: 18.0,
                               height: 18.0,
                               child: Stack(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 children: [
                                   if (valueOrDefault<bool>(
                                     valueOrDefault<String>(
@@ -209,7 +212,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                                   lineHeight: 1.4,
                                 ),
                           ),
-                        ].divide(SizedBox(width: 8.0)),
+                        ].divide(const SizedBox(width: 8.0)),
                       ),
                       if (valueOrDefault<bool>(
                         widget.isDefault,
@@ -276,8 +279,8 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                             ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 4.0, 0.0, 0.0),
                         child: Container(
                           child: Text(
                             valueOrDefault<String>(
@@ -308,13 +311,14 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 4.0)),
+                    ].divide(const SizedBox(height: 4.0)),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 8.0, 0.0, 8.0),
                     child: Container(),
                   ),
-                ].divide(SizedBox(height: 8.0)),
+                ].divide(const SizedBox(height: 8.0)),
               ),
             ),
           ),

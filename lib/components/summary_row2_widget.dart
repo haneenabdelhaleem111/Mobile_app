@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'summary_row2_model.dart';
 export 'summary_row2_model.dart';
 
@@ -11,9 +14,9 @@ class SummaryRow2Widget extends StatefulWidget {
     String? label,
     String? value,
     bool? bold,
-  })  : this.label = label ?? 'Subtotal (3 items)',
-        this.value = value ?? 'EGP 1,015.00',
-        this.bold = bold ?? false;
+  })  : label = label ?? 'Subtotal (3 items)',
+        value = value ?? 'EGP 1,015.00',
+        bold = bold ?? false;
 
   final String label;
   final String value;

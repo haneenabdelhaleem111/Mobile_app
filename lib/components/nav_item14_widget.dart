@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'nav_item14_model.dart';
 export 'nav_item14_model.dart';
 
@@ -12,9 +15,9 @@ class NavItem14Widget extends StatefulWidget {
     this.icon,
     String? target,
     bool? selected,
-  })  : this.label = label ?? 'Home',
-        this.target = target ?? 'home',
-        this.selected = selected ?? true;
+  })  : label = label ?? 'Home',
+        target = target ?? 'home',
+        selected = selected ?? true;
 
   final String label;
   final Widget? icon;
@@ -50,7 +53,7 @@ class _NavItem14WidgetState extends State<NavItem14Widget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 8.0, 4.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -85,7 +88,7 @@ class _NavItem14WidgetState extends State<NavItem14Widget> {
                   lineHeight: 1.5,
                 ),
           ),
-        ].divide(SizedBox(height: 2.0)),
+        ].divide(const SizedBox(height: 2.0)),
       ),
     );
   }

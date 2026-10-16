@@ -17,14 +17,18 @@ class CartItemWidget extends StatefulWidget {
     String? qty,
     bool? hasDiscount,
     String? originalPrice,
-  })  : this.brand = brand ?? 'GSK',
-        this.imageDesc = imageDesc ??
+    this.onDecrease,
+    this.onIncrease,
+    this.onRemove,
+    this.isBusy = false,
+  })  : brand = brand ?? 'GSK',
+        imageDesc = imageDesc ??
             'https://dimg.dreamflow.cloud/v1/image/white%20medicine%20box%20with%20blue%20text',
-        this.name = name ?? 'Panadol Advance 500mg',
-        this.price = price ?? 'EGP 45.00',
-        this.qty = qty ?? '2',
-        this.hasDiscount = hasDiscount ?? true,
-        this.originalPrice = originalPrice ?? '60.00';
+        name = name ?? 'Panadol Advance 500mg',
+        price = price ?? 'EGP 45.00',
+        qty = qty ?? '2',
+        hasDiscount = hasDiscount ?? true,
+        originalPrice = originalPrice ?? '60.00';
 
   final String brand;
   final String imageDesc;
@@ -33,6 +37,10 @@ class CartItemWidget extends StatefulWidget {
   final String qty;
   final bool hasDiscount;
   final String originalPrice;
+  final VoidCallback? onDecrease;
+  final VoidCallback? onIncrease;
+  final VoidCallback? onRemove;
+  final bool isBusy;
 
   @override
   State<CartItemWidget> createState() => _CartItemWidgetState();
@@ -63,7 +71,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
       child: Container(
         child: Container(
           decoration: BoxDecoration(
@@ -72,7 +80,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
             shape: BoxShape.rectangle,
           ),
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -89,18 +97,23 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                         shape: BoxShape.rectangle,
                       ),
-                      child: CachedNetworkImage(
-                        fadeInDuration: Duration(milliseconds: 0),
-                        fadeOutDuration: Duration(milliseconds: 0),
-                        imageUrl: valueOrDefault<String>(
-                          widget.imageDesc,
-                          'https://dimg.dreamflow.cloud/v1/image/white%20medicine%20box%20with%20blue%20text',
-                        ),
-                        width: 80.0,
-                        height: 80.0,
-                        fit: BoxFit.contain,
-                        alignment: Alignment(0.0, 0.0),
-                      ),
+                      child: widget.imageDesc.isEmpty
+                          ? Icon(
+                              Icons.medication_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                            )
+                          : CachedNetworkImage(
+                              fadeInDuration: const Duration(milliseconds: 0),
+                              fadeOutDuration: const Duration(milliseconds: 0),
+                              imageUrl: valueOrDefault<String>(
+                                widget.imageDesc,
+                                'https://dimg.dreamflow.cloud/v1/image/white%20medicine%20box%20with%20blue%20text',
+                              ),
+                              width: 80.0,
+                              height: 80.0,
+                              fit: BoxFit.contain,
+                              alignment: const Alignment(0.0, 0.0),
+                            ),
                     ),
                   ),
                   Expanded(
@@ -112,8 +125,8 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget.name,
-                            'Panadol Advance 500mg',
+                            widget.brand,
+                            'Product',
                           ),
                           maxLines: 2,
                           style: FlutterFlowTheme.of(context)
@@ -250,7 +263,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                                 shape: BoxShape.rectangle,
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.all(4.0),
                                 child: Container(
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -269,9 +282,9 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                                               .primary,
                                           size: 18.0,
                                         ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
+                                        onPressed: widget.isBusy
+                                            ? null
+                                            : widget.onDecrease,
                                       ),
                                       Text(
                                         valueOrDefault<String>(
@@ -317,21 +330,30 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                                               .primary,
                                           size: 18.0,
                                         ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
+                                        onPressed: widget.isBusy
+                                            ? null
+                                            : widget.onIncrease,
                                       ),
-                                    ].divide(SizedBox(width: 16.0)),
+                                    ].divide(const SizedBox(width: 16.0)),
                                   ),
                                 ),
                               ),
                             ),
-                          ].divide(SizedBox(width: 8.0)),
+                          ].divide(const SizedBox(width: 8.0)),
                         ),
-                      ].divide(SizedBox(height: 4.0)),
+                        Align(
+                          alignment: AlignmentDirectional.centerEnd,
+                          child: IconButton(
+                            tooltip: 'Remove ${widget.name}',
+                            visualDensity: VisualDensity.compact,
+                            onPressed: widget.isBusy ? null : widget.onRemove,
+                            icon: const Icon(Icons.delete_outline_rounded),
+                          ),
+                        ),
+                      ].divide(const SizedBox(height: 4.0)),
                     ),
                   ),
-                ].divide(SizedBox(width: 16.0)),
+                ].divide(const SizedBox(width: 16.0)),
               ),
             ),
           ),

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'checkbox_model.dart';
 export 'checkbox_model.dart';
 
@@ -14,12 +17,12 @@ class CheckboxWidget extends StatefulWidget {
     bool? isChecked,
     bool? hasSubtitle,
     bool? disabled,
-  })  : this.label = label ?? 'I agree to the Terms & Conditions',
-        this.subtitle = subtitle ?? 'and Privacy Policy of El-Emshaty Pharmacy',
-        this.color = color ?? const Color(0x00000000),
-        this.isChecked = isChecked ?? false,
-        this.hasSubtitle = hasSubtitle ?? true,
-        this.disabled = disabled ?? false;
+  })  : label = label ?? 'I agree to the Terms & Conditions',
+        subtitle = subtitle ?? 'and Privacy Policy of El-Emshaty Pharmacy',
+        color = color ?? const Color(0x00000000),
+        isChecked = isChecked ?? false,
+        hasSubtitle = hasSubtitle ?? true,
+        disabled = disabled ?? false;
 
   final String label;
   final String subtitle;
@@ -69,7 +72,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
       child: Container(
         child: Container(
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -124,7 +127,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
                               widget.isChecked,
                               false,
                             )
-                                ? Color(0x00000000)
+                                ? const Color(0x00000000)
                                 : Colors.transparent,
                             Colors.transparent,
                           ),
@@ -135,7 +138,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
                             width: 0.0,
                           ),
                         ),
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Visibility(
                           visible: valueOrDefault<bool>(
                             valueOrDefault<bool>(
@@ -237,7 +240,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
                       ],
                     ),
                   ),
-                ].divide(SizedBox(width: 16.0)),
+                ].divide(const SizedBox(width: 16.0)),
               ),
             ),
           ),

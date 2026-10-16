@@ -6,8 +6,11 @@ import '/components/emshaty_search_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'new_screen4_model.dart';
 export 'new_screen4_model.dart';
 
@@ -64,8 +67,8 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 8.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        16.0, 24.0, 16.0, 8.0),
                     child: Container(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -90,7 +93,8 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                           FlutterFlowTheme.of(context).primary,
                                       shape: BoxShape.circle,
                                     ),
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment:
+                                        const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'EM',
                                       textAlign: TextAlign.center,
@@ -161,9 +165,9 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.location_on_rounded,
-                                            color: Color(0xFF0F172A),
+                                            color: const Color(0xFF0F172A),
                                             size: 14.0,
                                           ),
                                           Text(
@@ -200,16 +204,16 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                                   lineHeight: 1.2,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(width: 4.0)),
+                                        ].divide(const SizedBox(width: 4.0)),
                                       ),
-                                    ].divide(SizedBox(height: 4.0)),
+                                    ].divide(const SizedBox(height: 4.0)),
                                   ),
-                                ].divide(SizedBox(width: 16.0)),
+                                ].divide(const SizedBox(width: 16.0)),
                               ),
                               FlutterFlowIconButton(
                                 borderRadius: 16.0,
                                 buttonSize: 40.0,
-                                fillColor: Color(0x1A0056B3),
+                                fillColor: const Color(0x1A0056B3),
                                 icon: Icon(
                                   Icons.shopping_basket_rounded,
                                   color: FlutterFlowTheme.of(context).primary,
@@ -224,9 +228,9 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                           wrapWithModel(
                             model: _model.emshatySearchBarModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: EmshatySearchBarWidget(),
+                            child: const EmshatySearchBarWidget(),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(const SizedBox(height: 16.0)),
                       ),
                     ),
                   ),
@@ -251,7 +255,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -261,7 +265,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                               wrapWithModel(
                                 model: _model.emshatyPromoBannerModel,
                                 updateCallback: () => safeSetState(() {}),
-                                child: EmshatyPromoBannerWidget(
+                                child: const EmshatyPromoBannerWidget(
                                   btnLabel: 'Shop Now',
                                   subtitle:
                                       'Boost your immunity today with our premium selection',
@@ -325,7 +329,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                                         .labelLarge
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF0F172A),
+                                              color: const Color(0xFF0F172A),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -434,10 +438,10 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                             title: 'Devices',
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                      ].divide(const SizedBox(width: 16.0)),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -485,7 +489,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                         model: _model.buttonModel1,
                                         updateCallback: () =>
                                             safeSetState(() {}),
-                                        child: Button23Widget(
+                                        child: const Button23Widget(
                                           iconPresent: false,
                                           iconEndPresent: false,
                                           content: 'View All',
@@ -512,7 +516,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                               _model.emshatyProductCardModel1,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: EmshatyProductCardWidget(
+                                          child: const EmshatyProductCardWidget(
                                             imgDesc:
                                                 'https://dimg.dreamflow.cloud/v1/image/box%20of%20panadol%20medicine',
                                             name: 'Panadol Advance 500mg',
@@ -525,7 +529,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                               _model.emshatyProductCardModel2,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: EmshatyProductCardWidget(
+                                          child: const EmshatyProductCardWidget(
                                             imgDesc:
                                                 'https://dimg.dreamflow.cloud/v1/image/blue%20skincare%20bottle',
                                             name: 'La Roche-Posay Effaclar',
@@ -538,7 +542,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                               _model.emshatyProductCardModel3,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: EmshatyProductCardWidget(
+                                          child: const EmshatyProductCardWidget(
                                             imgDesc:
                                                 'https://dimg.dreamflow.cloud/v1/image/vitamin%20bottle',
                                             name: 'Centrum Silver Lutein',
@@ -546,10 +550,10 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                             oldPrice: 'EGP 500.00',
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                      ].divide(const SizedBox(width: 16.0)),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ].divide(const SizedBox(height: 16.0)),
                               ),
                               Container(
                                 decoration: BoxDecoration(
@@ -564,7 +568,7 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(24.0),
+                                  padding: const EdgeInsets.all(24.0),
                                   child: Container(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -577,14 +581,14 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                           width: 48.0,
                                           height: 48.0,
                                           decoration: BoxDecoration(
-                                            color: Color(0x1A0056B3),
+                                            color: const Color(0x1A0056B3),
                                             borderRadius:
                                                 BorderRadius.circular(9999.0),
                                             shape: BoxShape.rectangle,
                                           ),
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Icon(
+                                          alignment: const AlignmentDirectional(
+                                              0.0, 0.0),
+                                          child: const Icon(
                                             Icons.description_rounded,
                                             color: Colors.white,
                                             size: 24.0,
@@ -671,14 +675,15 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                                       lineHeight: 1.4,
                                                     ),
                                               ),
-                                            ].divide(SizedBox(height: 4.0)),
+                                            ].divide(
+                                                const SizedBox(height: 4.0)),
                                           ),
                                         ),
                                         wrapWithModel(
                                           model: _model.buttonModel2,
                                           updateCallback: () =>
                                               safeSetState(() {}),
-                                          child: Button23Widget(
+                                          child: const Button23Widget(
                                             iconPresent: false,
                                             iconEndPresent: false,
                                             content: 'Upload',
@@ -689,12 +694,12 @@ class _NewScreen4WidgetState extends State<NewScreen4Widget> {
                                             disabled: false,
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                      ].divide(const SizedBox(width: 16.0)),
                                     ),
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(height: 24.0)),
+                            ].divide(const SizedBox(height: 24.0)),
                           ),
                         ),
                       ),

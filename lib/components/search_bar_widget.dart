@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'search_bar_model.dart';
 export 'search_bar_model.dart';
 
@@ -47,7 +50,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -81,7 +84,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                       ),
                 ),
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ].divide(const SizedBox(width: 16.0)),
           ),
         ),
       ),

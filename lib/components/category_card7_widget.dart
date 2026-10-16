@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'category_card7_model.dart';
 export 'category_card7_model.dart';
 
@@ -11,8 +14,8 @@ class CategoryCard7Widget extends StatefulWidget {
     Color? bgTint,
     this.icon,
     String? title,
-  })  : this.bgTint = bgTint ?? const Color(0x0D0056B3),
-        this.title = title ?? 'Medicine';
+  })  : bgTint = bgTint ?? const Color(0x0D0056B3),
+        title = title ?? 'Medicine';
 
   final Color bgTint;
   final Widget? icon;
@@ -52,16 +55,16 @@ class _CategoryCard7WidgetState extends State<CategoryCard7Widget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           widget.bgTint,
-          Color(0x0D0056B3),
+          const Color(0x0D0056B3),
         ),
         borderRadius: BorderRadius.circular(16.0),
         shape: BoxShape.rectangle,
       ),
       child: Padding(
-        padding: EdgeInsets.all(24.0),
+        padding: const EdgeInsets.all(24.0),
         child: Container(
           child: Container(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +95,7 @@ class _CategoryCard7WidgetState extends State<CategoryCard7Widget> {
                         lineHeight: 1.3,
                       ),
                 ),
-              ].divide(SizedBox(height: 8.0)),
+              ].divide(const SizedBox(height: 8.0)),
             ),
           ),
         ),

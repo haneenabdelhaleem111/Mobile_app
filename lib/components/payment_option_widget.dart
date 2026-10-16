@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'payment_option_model.dart';
 export 'payment_option_model.dart';
 
@@ -11,8 +14,8 @@ class PaymentOptionWidget extends StatefulWidget {
     this.icon,
     String? title,
     bool? selected,
-  })  : this.title = title ?? 'Cash on Delivery',
-        this.selected = selected ?? true;
+  })  : title = title ?? 'Cash on Delivery',
+        selected = selected ?? true;
 
   final Widget? icon;
   final String title;
@@ -73,7 +76,7 @@ class _PaymentOptionWidgetState extends State<PaymentOptionWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -106,11 +109,11 @@ class _PaymentOptionWidgetState extends State<PaymentOptionWidget> {
                       ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 24.0,
                 height: 24.0,
                 child: Stack(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   children: [
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
@@ -159,7 +162,7 @@ class _PaymentOptionWidgetState extends State<PaymentOptionWidget> {
                   ],
                 ),
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ].divide(const SizedBox(width: 16.0)),
           ),
         ),
       ),

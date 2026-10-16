@@ -1,10 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -34,156 +40,156 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => SplashScreenWidget(),
+      errorBuilder: (context, state) => const SplashScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashScreenWidget(),
+          builder: (context, _) => const SplashScreenWidget(),
         ),
         FFRoute(
           name: SplashScreenWidget.routeName,
           path: SplashScreenWidget.routePath,
-          builder: (context, params) => SplashScreenWidget(),
+          builder: (context, params) => const SplashScreenWidget(),
         ),
         FFRoute(
           name: Onboarding1Widget.routeName,
           path: Onboarding1Widget.routePath,
-          builder: (context, params) => Onboarding1Widget(),
+          builder: (context, params) => const Onboarding1Widget(),
         ),
         FFRoute(
           name: CategoryBrowserWidget.routeName,
           path: CategoryBrowserWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'category_browser')
-              : CategoryBrowserWidget(),
+              : const CategoryBrowserWidget(),
         ),
         FFRoute(
           name: ProductSearchFilterWidget.routeName,
           path: ProductSearchFilterWidget.routePath,
-          builder: (context, params) => ProductSearchFilterWidget(),
+          builder: (context, params) => const ProductSearchFilterWidget(),
         ),
         FFRoute(
           name: ShoppingCartWidget.routeName,
           path: ShoppingCartWidget.routePath,
-          builder: (context, params) => ShoppingCartWidget(),
+          builder: (context, params) => const ShoppingCartWidget(),
         ),
         FFRoute(
           name: CheckoutDeliveryWidget.routeName,
           path: CheckoutDeliveryWidget.routePath,
-          builder: (context, params) => CheckoutDeliveryWidget(),
+          builder: (context, params) => const CheckoutDeliveryWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
           path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: RegisterWidget.routeName,
           path: RegisterWidget.routePath,
-          builder: (context, params) => RegisterWidget(),
+          builder: (context, params) => const RegisterWidget(),
         ),
         FFRoute(
           name: ResetPasswordWidget.routeName,
           path: ResetPasswordWidget.routePath,
-          builder: (context, params) => ResetPasswordWidget(),
+          builder: (context, params) => const ResetPasswordWidget(),
         ),
         FFRoute(
           name: EmptyCartWidget.routeName,
           path: EmptyCartWidget.routePath,
-          builder: (context, params) => EmptyCartWidget(),
+          builder: (context, params) => const EmptyCartWidget(),
         ),
         FFRoute(
           name: EmptyWishlistWidget.routeName,
           path: EmptyWishlistWidget.routePath,
-          builder: (context, params) => EmptyWishlistWidget(),
+          builder: (context, params) => const EmptyWishlistWidget(),
         ),
         FFRoute(
           name: EmptyNoConnectionWidget.routeName,
           path: EmptyNoConnectionWidget.routePath,
-          builder: (context, params) => EmptyNoConnectionWidget(),
+          builder: (context, params) => const EmptyNoConnectionWidget(),
         ),
         FFRoute(
           name: EmptyNoOrdersWidget.routeName,
           path: EmptyNoOrdersWidget.routePath,
-          builder: (context, params) => EmptyNoOrdersWidget(),
+          builder: (context, params) => const EmptyNoOrdersWidget(),
         ),
         FFRoute(
           name: ServerErrorWidget.routeName,
           path: ServerErrorWidget.routePath,
-          builder: (context, params) => ServerErrorWidget(),
+          builder: (context, params) => const ServerErrorWidget(),
         ),
         FFRoute(
           name: AccountDashboardWidget.routeName,
           path: AccountDashboardWidget.routePath,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'AccountDashboard')
-              : AccountDashboardWidget(),
+              : const AccountDashboardWidget(),
         ),
         FFRoute(
           name: MyProfile2Widget.routeName,
           path: MyProfile2Widget.routePath,
-          builder: (context, params) => MyProfile2Widget(),
+          builder: (context, params) => const MyProfile2Widget(),
         ),
         FFRoute(
           name: EditProfileWidget.routeName,
           path: EditProfileWidget.routePath,
-          builder: (context, params) => EditProfileWidget(),
+          builder: (context, params) => const EditProfileWidget(),
         ),
         FFRoute(
           name: NotificationsWidget.routeName,
           path: NotificationsWidget.routePath,
-          builder: (context, params) => NotificationsWidget(),
+          builder: (context, params) => const NotificationsWidget(),
         ),
         FFRoute(
           name: OrderSuccessWidget.routeName,
           path: OrderSuccessWidget.routePath,
-          builder: (context, params) => OrderSuccessWidget(),
+          builder: (context, params) => const OrderSuccessWidget(),
         ),
         FFRoute(
           name: WishlistWidget.routeName,
           path: WishlistWidget.routePath,
-          builder: (context, params) => WishlistWidget(),
+          builder: (context, params) => const WishlistWidget(),
         ),
         FFRoute(
           name: ProductDetailsWidget.routeName,
           path: ProductDetailsWidget.routePath,
-          builder: (context, params) => ProductDetailsWidget(),
+          builder: (context, params) => const ProductDetailsWidget(),
         ),
         FFRoute(
           name: NewScreen4Widget.routeName,
           path: NewScreen4Widget.routePath,
-          builder: (context, params) => NewScreen4Widget(),
+          builder: (context, params) => const NewScreen4Widget(),
         ),
         FFRoute(
           name: HomeWidget.routeName,
           path: HomeWidget.routePath,
-          builder: (context, params) => HomeWidget(),
+          builder: (context, params) => const HomeWidget(),
         ),
         FFRoute(
           name: ProductsSearchWidget.routeName,
           path: ProductsSearchWidget.routePath,
-          builder: (context, params) => ProductsSearchWidget(),
+          builder: (context, params) => const ProductsSearchWidget(),
         ),
         FFRoute(
           name: DealsWidget.routeName,
           path: DealsWidget.routePath,
-          builder: (context, params) => DealsWidget(),
+          builder: (context, params) => const DealsWidget(),
         ),
         FFRoute(
           name: TermconditionsWidget.routeName,
           path: TermconditionsWidget.routePath,
-          builder: (context, params) => TermconditionsWidget(),
+          builder: (context, params) => const TermconditionsWidget(),
         ),
         FFRoute(
           name: TermsConditionsWidget.routeName,
           path: TermsConditionsWidget.routePath,
-          builder: (context, params) => TermsConditionsWidget(),
+          builder: (context, params) => const TermsConditionsWidget(),
         ),
         FFRoute(
           name: BrandsWidget.routeName,
           path: BrandsWidget.routePath,
-          builder: (context, params) => BrandsWidget(),
+          builder: (context, params) => const BrandsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -353,7 +359,8 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

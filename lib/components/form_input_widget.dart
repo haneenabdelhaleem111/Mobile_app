@@ -1,8 +1,11 @@
 import '/components/text_field5_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'form_input_model.dart';
 export 'form_input_model.dart';
 
@@ -14,11 +17,11 @@ class FormInputWidget extends StatefulWidget {
     String? label,
     String? type,
     String? value,
-  })  : this.hint = hint ?? 'Enter your full name',
-        this.icon = icon ?? 'person_outline_rounded',
-        this.label = label ?? 'Full Name',
-        this.type = type ?? 'text',
-        this.value = value ?? 'Ahmed Al-Mansouri';
+  })  : hint = hint ?? 'Enter your full name',
+        icon = icon ?? 'person_outline_rounded',
+        label = label ?? 'Full Name',
+        type = type ?? 'text',
+        value = value ?? 'Ahmed Al-Mansouri';
 
   final String hint;
   final String icon;
@@ -101,7 +104,7 @@ class _FormInputWidgetState extends State<FormInputWidget> {
             error: false,
           ),
         ),
-      ].divide(SizedBox(height: 4.0)),
+      ].divide(const SizedBox(height: 4.0)),
     );
   }
 }

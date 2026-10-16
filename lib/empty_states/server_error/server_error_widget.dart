@@ -1,7 +1,10 @@
 import '/components/empty_state_server_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'server_error_model.dart';
 export 'server_error_model.dart';
 
@@ -48,7 +51,7 @@ class _ServerErrorWidgetState extends State<ServerErrorWidget> {
           child: wrapWithModel(
             model: _model.emptyStateServerModel,
             updateCallback: () => safeSetState(() {}),
-            child: EmptyStateServerWidget(),
+            child: const EmptyStateServerWidget(),
           ),
         ),
       ),

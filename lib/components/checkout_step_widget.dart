@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'checkout_step_model.dart';
 export 'checkout_step_model.dart';
 
@@ -11,9 +14,9 @@ class CheckoutStepWidget extends StatefulWidget {
     bool? done,
     String? title,
     bool? active,
-  })  : this.done = done ?? false,
-        this.title = title ?? 'Address',
-        this.active = active ?? true;
+  })  : done = done ?? false,
+        title = title ?? 'Address',
+        active = active ?? true;
 
   final bool done;
   final String title;
@@ -89,7 +92,7 @@ class _CheckoutStepWidgetState extends State<CheckoutStepWidget> {
               width: 1.0,
             ),
           ),
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -104,11 +107,11 @@ class _CheckoutStepWidgetState extends State<CheckoutStepWidget> {
                     : false,
                 true,
               ))
-                Container(
+                SizedBox(
                   width: 16.0,
                   height: 16.0,
                   child: Stack(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     children: [
                       if (valueOrDefault<bool>(
                         valueOrDefault<bool>(
@@ -119,7 +122,7 @@ class _CheckoutStepWidgetState extends State<CheckoutStepWidget> {
                             : false,
                         true,
                       ))
-                        Icon(
+                        const Icon(
                           Icons.check_rounded,
                           size: 16.0,
                         ),
@@ -132,7 +135,7 @@ class _CheckoutStepWidgetState extends State<CheckoutStepWidget> {
                             : true,
                         false,
                       ))
-                        Icon(
+                        const Icon(
                           Icons.edit_location_rounded,
                           size: 16.0,
                         ),
@@ -204,7 +207,7 @@ class _CheckoutStepWidgetState extends State<CheckoutStepWidget> {
                 lineHeight: 1.2,
               ),
         ),
-      ].divide(SizedBox(height: 4.0)),
+      ].divide(const SizedBox(height: 4.0)),
     );
   }
 }

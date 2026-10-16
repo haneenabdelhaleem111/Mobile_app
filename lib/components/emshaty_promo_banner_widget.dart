@@ -1,8 +1,11 @@
 import '/components/button23_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'emshaty_promo_banner_model.dart';
 export 'emshaty_promo_banner_model.dart';
 
@@ -12,10 +15,10 @@ class EmshatyPromoBannerWidget extends StatefulWidget {
     String? btnLabel,
     String? subtitle,
     String? title,
-  })  : this.btnLabel = btnLabel ?? 'Shop Now',
-        this.subtitle =
+  })  : btnLabel = btnLabel ?? 'Shop Now',
+        subtitle =
             subtitle ?? 'Boost your immunity today with our premium selection',
-        this.title = title ?? '25% Off Vitamins';
+        title = title ?? '25% Off Vitamins';
 
   final String btnLabel;
   final String subtitle;
@@ -58,19 +61,19 @@ class _EmshatyPromoBannerWidgetState extends State<EmshatyPromoBannerWidget> {
             FlutterFlowTheme.of(context).primary,
             FlutterFlowTheme.of(context).secondary
           ],
-          stops: [0.0, 1.0],
-          begin: AlignmentDirectional(-1.0, 0.0),
-          end: AlignmentDirectional(1.0, 0),
+          stops: const [0.0, 1.0],
+          begin: const AlignmentDirectional(-1.0, 0.0),
+          end: const AlignmentDirectional(1.0, 0),
         ),
         borderRadius: BorderRadius.circular(24.0),
         shape: BoxShape.rectangle,
       ),
       child: Padding(
-        padding: EdgeInsets.all(24.0),
+        padding: const EdgeInsets.all(24.0),
         child: Container(
           child: Container(
             height: 112.0,
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +126,7 @@ class _EmshatyPromoBannerWidgetState extends State<EmshatyPromoBannerWidget> {
                                     .bodySmall
                                     .fontStyle,
                               ),
-                              color: Color(0xCCFFFFFF),
+                              color: const Color(0xCCFFFFFF),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodySmall
@@ -135,8 +138,8 @@ class _EmshatyPromoBannerWidgetState extends State<EmshatyPromoBannerWidget> {
                             ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            8.0, 0.0, 8.0, 0.0),
                         child: Container(
                           child: Container(
                             child: wrapWithModel(
@@ -159,16 +162,16 @@ class _EmshatyPromoBannerWidgetState extends State<EmshatyPromoBannerWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 8.0)),
+                    ].divide(const SizedBox(height: 8.0)),
                   ),
                 ),
                 Container(
                   width: 100.0,
                   height: 100.0,
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Icon(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: const Icon(
                     Icons.local_pharmacy_rounded,
-                    color: Color(0x33FFFFFF),
+                    color: const Color(0x33FFFFFF),
                     size: 80.0,
                   ),
                 ),

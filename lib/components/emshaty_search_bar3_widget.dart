@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'emshaty_search_bar3_model.dart';
 export 'emshaty_search_bar3_model.dart';
 
@@ -48,7 +51,7 @@ class _EmshatySearchBar3WidgetState extends State<EmshatySearchBar3Widget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -82,7 +85,7 @@ class _EmshatySearchBar3WidgetState extends State<EmshatySearchBar3Widget> {
                       ),
                 ),
               ),
-            ].divide(SizedBox(width: 16.0)),
+            ].divide(const SizedBox(width: 16.0)),
           ),
         ),
       ),

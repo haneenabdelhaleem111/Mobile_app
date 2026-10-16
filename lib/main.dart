@@ -1,9 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
 void main() async {
@@ -15,6 +18,8 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
@@ -58,7 +63,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Elemshaty Pharmacy',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -75,12 +80,12 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({
-    Key? key,
+  const NavBarPage({
+    super.key,
     this.initialPage,
     this.page,
     this.disableResizeToAvoidBottomInset = false,
-  }) : super(key: key);
+  });
 
   final String? initialPage;
   final Widget? page;
@@ -105,8 +110,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'category_browser': CategoryBrowserWidget(),
-      'AccountDashboard': AccountDashboardWidget(),
+      'category_browser': const CategoryBrowserWidget(),
+      'AccountDashboard': const AccountDashboardWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -130,16 +135,16 @@ class _NavBarPageState extends State<NavBarPage> {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.apps_sharp,
               ),
               label: 'Category\n',
               tooltip: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.person,
               ),
               label: 'Profile',

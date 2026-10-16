@@ -13,6 +13,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
+import 'lat_lng.dart';
 
 export 'lat_lng.dart';
 export 'place.dart';
@@ -280,8 +281,8 @@ void showSnackbar(
         children: [
           if (loading)
             Padding(
-              padding: EdgeInsetsDirectional.only(end: 10.0),
-              child: Container(
+              padding: const EdgeInsetsDirectional.only(end: 10.0),
+              child: SizedBox(
                 height: 20,
                 width: 20,
                 child: const CircularProgressIndicator(
